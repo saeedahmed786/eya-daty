@@ -10,9 +10,11 @@ import illustration from "../assets/illustration.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
+import { useRouter } from 'next/router'
 
 const Login = () => {
     const [form] = Form.useForm();
+    const router = useRouter();
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
@@ -21,14 +23,14 @@ const Login = () => {
         <>
             <div className='container px-5 mx-auto py-8'>
                 <div className='flex gap-2 items-center'>
-                    <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/login">Connexion</Link>
+                    <span>Accueil</span> <RightIcon />  <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Connexion</button>
                 </div>
                 <Row className='py-10'>
                     <Col md={12}>
                         <h1 className='text-[64px] leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <Link href='/signup' className='text-[#0094DA]'>Créer un compte</Link>
+                            <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Créer un compte</button>
                         </div>
                         <Form
                             form={form}
@@ -73,7 +75,7 @@ const Login = () => {
                                     <span>souviens-toi de moi</span>
                                 </div>
                                 <div>
-                                    <a className='text-[#0094DA]' href='/forgot-password'>{"j'ai oublie le mot de passe?"}</a>
+                                    <button className='text-[#0094DA] border-0' onClick={() => router.push("/forgot-password")}>{"j'ai oublie le mot de passe?"}</button>
                                 </div>
                             </div>
                             <Form.Item className='my-5'>
