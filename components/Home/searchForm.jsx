@@ -44,7 +44,7 @@ export default function SearchForm() {
                         h-[48px]
                         w-full
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none flex items-center">
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none flex justify-center items-center">
                                     <Image className='absolute' src={SearchIcon} alt="Search" width={32} />  <span>Chercher</span>
                                 </button>
                             </div>
