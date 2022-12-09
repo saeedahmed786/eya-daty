@@ -177,11 +177,11 @@ a:hover {
 }
 
 .FAQ :where(.css-dev-only-do-not-override-1s3dcof).ant-collapse-ghost>.ant-collapse-item .ant-collapse-header {
-    background: #F5F8FB;
-    border-radius: 12px;
-    margin-top: 6px;
-    height: 68px;
-    align-items: center;
+    background: #F5F8FB !important;
+    border-radius: 12px !important;
+    margin-top: 6px !important;
+    height: 68px !important;
+    align-items: center !important;
 }
 
 .FAQ .ant-collapse-header-text {
@@ -197,28 +197,28 @@ a:hover {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 24px !important;
     display: flex;
     align-items: center;
     color: #333B42;
     padding: 23px !important;
 }
 
-.FAQ .ant-collapse-item-active .ant-collapse-header {
+.FAQ .ant-collapse-ghost>.ant-collapse-item.ant-collapse-item-active .ant-collapse-header {
     background: #0094DA !important;
-    border-radius: 12px;
+    border-radius: 12px !important;
 }
 
 .FAQ .ant-collapse-item-active .ant-collapse-header .ant-collapse-header-text {
-    color: white;
+    color: white !important;
 }
 
 .FAQ .ant-collapse-header svg {
-    font-size: 17px;
+    font-size: 17px !important;
 }
 
 .FAQ .ant-collapse-item-active svg {
-    color: white;
+    color: white !important;
 }
 
 
