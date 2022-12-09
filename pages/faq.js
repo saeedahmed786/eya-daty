@@ -1,5 +1,6 @@
 import { Collapse } from 'antd'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import illustration from "../assets/faq.svg"
 import Footer from '../components/footer/footer'
@@ -22,7 +23,7 @@ const FAQ = () => {
                 </div>
                 <div className='mt-0'>
                     <div className='flex gap-2 justify-center items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <a className='text-[#0094DA]' href="/faq">FAQ</a>
+                        <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/faq">FAQ</Link>
                     </div>
                     <div className='text-center'>
                         <h1 className='bigTitle'>Nous sommes là <br /> pour vous aider</h1>

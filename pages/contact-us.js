@@ -25,7 +25,7 @@ const ContactUs = () => {
                 <Row align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
                         <div className='flex gap-2 items-center py-4'>
-                            <span>Accueil</span> <RightIcon /> <a className='text-[#0094DA]' href="/contact-us">Contactez-nous</a>
+                            <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/contact-us">Contactez-nous</Link>
                         </div>
                         <h1 className='text-[64px] leading-[72px] font-[700] pb-6'>Contactez-nous</h1>
                         <Form

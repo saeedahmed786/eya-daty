@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import illustration from "../assets/terms.svg"
 import Footer from '../components/footer/footer'
@@ -15,7 +16,7 @@ const PrivacyPolicy = () => {
                 </div>
                 <div className=''>
                     <div className='flex gap-2 items-center py-4'>
-                        <span>Accueil</span> <RightIcon /> <a className='text-[#0094DA]' href="/forgot-password">Politique de confidentialité</a>
+                        <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/forgot-password">Politique de confidentialité</Link>
                     </div>
                     <div>
                         <h1 className='bigTitle'>Politique de confidentialité</h1>

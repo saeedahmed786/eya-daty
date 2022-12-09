@@ -28,7 +28,7 @@ const Login = () => {
                         <h1 className='text-[64px] leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <a href='/signup' className='text-[#0094DA]'>Créer un compte</a>
+                            <Link href='/signup' className='text-[#0094DA]'>Créer un compte</Link>
                         </div>
                         <Form
                             form={form}
@@ -73,7 +73,7 @@ const Login = () => {
                                     <span>souviens-toi de moi</span>
                                 </div>
                                 <div>
-                                    <a className='text-[#0094DA]' href='/reg'>{"j'ai oublie le mot de passe?"}</a>
+                                    <a className='text-[#0094DA]' href='/forgot-password'>{"j'ai oublie le mot de passe?"}</a>
                                 </div>
                             </div>
                             <Form.Item className='my-5'>

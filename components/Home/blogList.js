@@ -42,7 +42,7 @@ export default function BlogList() {
                                                     </p>
                                                     <h5 className={"text-3xl text-white font-bond pb-4"}>Une hernie discale lombaire ventrale..</h5>
                                                     <div className={'flex items-center gap-2'}>
-                                                        <Image className={"object-contain max-w-[24px] max-h-[24px] w-full h-full"} src={Avatar} />
+                                                        <Image alt='Blog' className={"object-contain max-w-[24px] max-h-[24px] w-full h-full"} src={Avatar} />
                                                         <span className={"text-white text-sm"}>Selma Achref</span>
                                                     </div>
                                                 </div>

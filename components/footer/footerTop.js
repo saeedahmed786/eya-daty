@@ -4,13 +4,14 @@ import Image from "next/image";
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsEnvelope, BsWhatsapp } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5"
 import { FiPhoneCall } from "react-icons/fi"
+import Link from "next/link"; 
 
 const FooterTop = () => {
     return (
         <>
             <div className={" border-b border-gray__color mb-10 pb-10 gap-8 grid p-4 md:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
                 <div className={"flex flex-col items-start gap-5 sm:items-center"}>
-                    <Image src={Logo} alt={"Logo"} className={" object-contain"} />
+                    <Image src={Logo} alt="Logo Image" className={" object-contain"} />
                     <p className={"text-light__gray__color text-sm"}>
                         Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok.
                         Nir nist så keltisk tiger usat fast bior.
@@ -33,26 +34,45 @@ const FooterTop = () => {
                 <div>
                     <h2 className={"text-white font-bold"}>Liens</h2>
                     <ul className={"flex flex-col gap-3 mt-4"}>
-                        {['Accueil', 'À propos de nous', 'Rozaliss', 'Termes et conditions', 'Politique de confidentialité'].map(text => {
+                        {/* {['Accueil', 'À propos de nous', 'Rozaliss', 'Termes et conditions', 'Politique de confidentialité'].map(text => {
                             return (
-                                <Fragment key={text}>
-                                    <li className={"text-light__gray__color text-sm"}>{text}</li>
-                                </Fragment>
+                                <Fragment key={text}> */}
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/">Accueil</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/">À propos de nous</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/">Rozaliss</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/terms-and-conditions">Termes et conditions</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/privacy-policy">Politique de confidentialité</Link>
+                        </li>
+                        {/* </Fragment>
                             )
-                        })}
+                        })} */}
 
                     </ul>
                 </div>
                 <div>
                     <h2 className={"text-white font-bold opacity-0 pointer-events-none"}>Liens</h2>
                     <ul className={"flex flex-col gap-3 mt-4"}>
-                        {['Blog', 'Contactez-nous', 'Notre partenaires', 'FAQ'].map(text => {
-                            return (
-                                <Fragment key={text}>
-                                    <li className={"text-light__gray__color text-sm"}>{text}</li>
-                                </Fragment>
-                            )
-                        })}
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/blog">Blog</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/contact-us">Contactez-nous</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/">Notre partenaires</Link>
+                        </li>
+                        <li className={"text-light__gray__color text-sm"}>
+                            <Link href="/faq">FAQ</Link>
+                        </li>
                     </ul>
                 </div>
                 <div>

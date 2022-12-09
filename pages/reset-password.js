@@ -6,6 +6,7 @@ import illustration from "../assets/reset.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
+import Link from 'next/link'
 
 const ResetPassword = () => {
     const [form] = Form.useForm();
@@ -19,7 +20,7 @@ const ResetPassword = () => {
                 <Row className='py-0' align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
                         <div className='flex gap-2 items-center py-3'>
-                            <span>Accueil</span> <RightIcon /> <a className='text-[#0094DA]' href="/reset-password">Réinitialisation du mot de passe</a>
+                            <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/reset-password">Réinitialisation du mot de passe</Link>
                         </div>
                         <h1 className='text-[64px] leading-[72px] font-[700]'>Réinitialisation du mot de passe</h1>
                         <Form

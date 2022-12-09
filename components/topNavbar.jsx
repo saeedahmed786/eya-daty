@@ -15,9 +15,9 @@ export default function TopNavbar() {
     <header className="text-gray-600 py-4 px-5 lg:px-20 bg-sitegreen body-font">
       <div className="container mx-auto flex justify-between flex-col  md:flex-row lg:items-center">
         <div>
-          <a href="/" className="flex justify-start title-font font-medium lg:items-center text-white mb-4 md:mb-0">
+          <Link href="/" className="flex justify-start title-font font-medium lg:items-center text-white mb-4 md:mb-0">
             Rozalis
-          </a>
+          </Link>
         </div>
         <div className=' lg:w-1/4 w-full flex justify-between '>
           <div className='bg-white rounded-[8px] px-4 p-2 flex items-center justify-center'>

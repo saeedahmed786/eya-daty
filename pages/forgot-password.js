@@ -6,11 +6,14 @@ import RightIcon from '../icons/righticon'
 import illustration from "../assets/forgot.svg"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
+import { useRouter } from 'next/router'
 
 const ForgotPassword = () => {
     const [form] = Form.useForm();
+    const router = useRouter();
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+        router.push("/reset-password")
     };
 
     return (

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Image from 'next/image'
-import Logo from "/assets/logo.svg"
+import Logo from "/assets/Logo.svg"
 import { BsFacebook, BsTwitter, BsInstagram, BsLinkedin } from "react-icons/bs"
 
 export default function Subscribe() {

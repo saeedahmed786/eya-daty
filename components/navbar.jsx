@@ -4,9 +4,11 @@ import BurgerMenuIcon from '../icons/burgermenuicon'
 import SearchIcon from "/assets/search.svg"
 import Link from 'next/link'
 import Image from 'next/image'
+import { Router, useRouter } from 'next/router'
 
 
 export default function Navbar() {
+  const router = useRouter();
   return (
 
     <header className="text-gray-600 body-font">
@@ -23,7 +25,7 @@ export default function Navbar() {
         <div className='w-1/2 flex flex-row gap-20 justify-end'>
           <div className='lg:block w-2/5 relative'>
             <input className=" placeholder:text-slate-400 block w-full border border-slate-300 rounded-[12px] bg-[#F5F8FB] p-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Chercher..." type="text" name="search" />
-            <div className='absolute top-4 right-2'>
+            <div className='absolute top-4 right-2 text-black'>
               <Image className='absolute' src={SearchIcon} alt="Search" width={32} />
             </div>
           </div>
@@ -31,9 +33,9 @@ export default function Navbar() {
             <button className="focus:outline-0 min-w-[100px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
               S`inscrire
             </button>
-            <a href="/login" className="focus:outline-0 min-w-[100px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">
+            <button onClick={() => router.push("/login")} className="focus:outline-0 min-w-[100px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">
               Connexion
-            </a>
+            </button>
           </div>
         </div>
       </div>
