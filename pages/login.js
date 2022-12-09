@@ -6,7 +6,7 @@ import RightIcon from '../icons/righticon'
 import google from "../assets/google.svg"
 import facebook from "../assets/facebook.svg"
 import twitter from "../assets/twitter.svg"
-import illustration from "../assets/illustration.svg"
+import illustration from "../assets/Illustration.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
