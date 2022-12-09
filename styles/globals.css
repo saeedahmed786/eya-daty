@@ -115,7 +115,8 @@ a:hover {
     content: url("../assets/danger.svg");
 }
 
-.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-row {
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-row,
+:where(.css-1s3dcof).ant-form-item .ant-form-item-label>label {
     display: block;
 }
 
@@ -133,6 +134,10 @@ a:hover {
 
 .ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-form-item {
     margin-bottom: 10px;
+}
+
+.ant-form .ant-form-item .ant-row {
+    display: block !important;
 }
 
 .bigTitle {
