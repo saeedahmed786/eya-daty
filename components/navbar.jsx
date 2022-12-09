@@ -22,7 +22,7 @@ export default function Navbar() {
         </nav>
         <div className='w-1/2 flex flex-row gap-20 justify-end'>
           <div className='lg:block w-2/5 relative'>
-            <input className=" placeholder:text-slate-400 block w-full border border-slate-300 rounded-[12px] bg-[#F5F8FB] p-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for anything..." type="text" name="search" />
+            <input className=" placeholder:text-slate-400 block w-full border border-slate-300 rounded-[12px] bg-[#F5F8FB] p-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Chercher..." type="text" name="search" />
             <div className='absolute top-4 right-2'>
               <Image className='absolute' src={SearchIcon} alt="Search" width={32} />
             </div>

@@ -8,7 +8,7 @@ export default function Subscribe() {
         <div>
             <section className="text-gray-600 body-font bg-[url('../assets/Background.svg')] bg-no-repeat bg-cover min-h-[600px] h-full w-full">
                 <div className="container px-5 mx-auto py-16">
-                    <div className={"w-[50%]"}>
+                    <div className={"w-full sm:w-[50%]"}>
                         <Image src={Logo} alt={"Logo"} />
                         <h1 className={"text-5xl font-[700] text-dark__color py-8"}>Abonnez-vous pour
                             toute mise à jour</h1>

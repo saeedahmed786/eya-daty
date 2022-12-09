@@ -2,18 +2,18 @@ import React from 'react'
 import Image from 'next/image'
 import apphand from '/assets/apphand.svg'
 
-export default function DownloadApp() {
+export default function DownloadApp({ noMargin }) {
   return (
     <div className="bg-[url('../assets/downloadbanner.png')] bg-cover bg-no-repeat">
-      <div className='flex flex-row justify-between min-h-[480px] h-full mb-12 px-5 container mx-auto'>
-        <div className='flex flex-col justify-center  space-y-5 w-3/5'>
-          <h1 className="text-5xl font-bold text-[#FFFFFF] pr-32">
+      <div className={`flex flex-row justify-between flex-wrap min-h-[480px] h-full ${!noMargin && "mb-12"} px-5 container mx-auto`}>
+        <div className='flex flex-col justify-center space-y-5 sm:w-3/5 text-center sm:text-left py-5 sm:py-0'>
+          <h1 className="text-5xl font-bold text-[#FFFFFF] sm:pr-32">
             Téléchargez l`application Eyadaty.
           </h1>
           <h3 className="text-1xl font-thin text-[#FFFFFF]">
             Et prenez bien soin de votre santé.
           </h3>
-          <div className='space-x-3 flex gap-2' style={{ width: "100%" }}>
+          <div className='space-x-3 flex gap-4 justify-center sm:justify-start flex-wrap' style={{ width: "100%" }}>
             <button className="bg-gray-100 inline-flex p-4 rounded-lg items-center hover:bg-gray-200 focus:outline-none w-50 h-[70px]">
               <span className="flex items-start flex-col leading-none mr-2">
                 <span className="text-[12px] text-gray-600 mb-1">{"Téléchargez l'application depuis"}</span>
@@ -35,7 +35,7 @@ export default function DownloadApp() {
             </button>
           </div>
         </div>
-        <div className='w-2/5 flex items-end'>
+        <div className='sm:w-2/5 flex items-end mt-12 sm:mt-0'>
           <Image src={apphand} alt="Appholding hand" height={400} width={400} />
         </div>
       </div>

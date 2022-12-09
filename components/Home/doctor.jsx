@@ -5,9 +5,9 @@ import apphand from '/assets/doctor.svg'
 export default function Doctor() {
     return (
         <div className="bg-gray-700 w-full">
-            <div className="flex flex-row justify-between mt-12 px-5 container mx-auto mb-12 bg-center bg-opacity-5 bg-cover bg-no-repeat">
-                <div className='flex flex-col justify-center pr-10  space-y-5 w-3/5'>
-                    <h1 className="text-5xl font-bold text-white dark:text-white pr-32">
+            <div className="flex flex-row p-4 sm:p-0 flex-wrap justify-between mt-12 px-5 container mx-auto mb-12 bg-center bg-opacity-5 bg-cover bg-no-repeat">
+                <div className='flex flex-col justify-center pr-10 space-y-5 w-full sm:w-3/5'>
+                    <h1 className="text-5xl font-bold text-white dark:text-white sm:pr-32">
                         Se sentir
                         mieux pour trouver
                         des soins de santé
@@ -21,7 +21,7 @@ export default function Doctor() {
                         </button>
                     </div>
                 </div>
-                <div className='w-2/5 flex items-center'>
+                <div className='sm:w-2/5 flex items-center mt-10 sm:mt-0'>
                     <Image src={apphand} alt="Appholding hand" className="object-contain" height={400} width={400} />
                 </div>
             </div>

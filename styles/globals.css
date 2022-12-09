@@ -25,8 +25,8 @@ div {
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+    /* color: inherit !important; */
+    text-decoration: inherit;
 }
 
 a:hover {
@@ -104,4 +104,108 @@ a:hover {
 
 .ant-input-affix-wrapper .ant-input {
     height: auto !important;
+}
+
+.ant-form-item-feedback-icon .anticon-close-circle svg {
+    display: none !important;
+}
+
+.ant-form-item-feedback-icon .anticon-close-circle::after {
+    content: url("../assets/danger.svg");
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-row {
+    display: block;
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    display: none;
+}
+
+.ant-form-item-feedback-icon-success .anticon {
+    vertical-align: 1px;
+}
+
+:where(.css-dev-only-do-not-override-1s3dcof).ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #0094DA;
+}
+
+.ant-form :where(.css-dev-only-do-not-override-1s3dcof).ant-form-item {
+    margin-bottom: 10px;
+}
+
+.bigTitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.subTitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin-bottom: 0px;
+}
+
+.normalPara {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333B42;
+}
+
+.FAQ :where(.css-dev-only-do-not-override-1s3dcof).ant-collapse-ghost>.ant-collapse-item .ant-collapse-header {
+    background: #F5F8FB;
+    border-radius: 12px;
+    margin-top: 6px;
+    height: 68px;
+    align-items: center;
+}
+
+.FAQ .ant-collapse-header-text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1C2126;
+}
+
+.FAQ .ant-collapse-content-box {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #333B42;
+    padding: 23px !important;
+}
+
+.FAQ .ant-collapse-item-active .ant-collapse-header {
+    background: #0094DA !important;
+    border-radius: 12px;
+}
+
+.FAQ .ant-collapse-item-active .ant-collapse-header .ant-collapse-header-text {
+    color: white;
+}
+
+.FAQ .ant-collapse-header svg {
+    font-size: 17px;
+}
+
+.FAQ .ant-collapse-item-active svg {
+    color: white;
 }

@@ -1,4 +1,4 @@
-import { Col, Divider, Form, Input, Row, Switch } from 'antd'
+import { Checkbox, Col, Divider, Form, Input, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,12 +6,12 @@ import RightIcon from '../icons/righticon'
 import google from "../assets/google.svg"
 import facebook from "../assets/facebook.svg"
 import twitter from "../assets/twitter.svg"
-import illustration from "../assets/illustration.svg"
+import illustration from "../assets/signup.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
 
-const Login = () => {
+const Signup = () => {
     const [form] = Form.useForm();
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
@@ -21,18 +21,18 @@ const Login = () => {
         <>
             <div className='container px-5 mx-auto py-8'>
                 <div className='flex gap-2 items-center'>
-                    <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/login">Connexion</Link>
+                    <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
                 </div>
-                <Row className='py-10'>
+                <Row className='py-10' align="middle">
                     <Col md={12}>
-                        <h1 className='text-[64px] leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
+                        <h1 className='text-[64px] leading-[72px] font-[700]'>Créer un<br /> compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <a href='/register' className='text-[#0094DA]'>Créer un compte</a>
+                            <a href='/register' className='text-[#0094DA]'>Connexion</a>
                         </div>
                         <Form
                             form={form}
-                            name="Login"
+                            name="register"
                             onFinish={onFinish}
                             scrollToFirstError
                         >
@@ -67,15 +67,43 @@ const Login = () => {
                             >
                                 <Input.Password placeholder='Mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
                             </Form.Item>
-                            <div className='flex justify-between'>
-                                <div className='flex items-center gap-2'>
-                                    <Switch className='bg-gray border border-[#A7ADBA] rounded-[12px]' />
-                                    <span>souviens-toi de moi</span>
-                                </div>
-                                <div>
-                                    <a className='text-[#0094DA]' href='/reg'>{"j'ai oublie le mot de passe?"}</a>
-                                </div>
-                            </div>
+
+                            <Form.Item
+                                name="confirm"
+                                label="Confirm Password"
+                                dependencies={['password']}
+                                hasFeedback
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please confirm your password!',
+                                    },
+                                    ({ getFieldValue }) => ({
+                                        validator(_, value) {
+                                            if (!value || getFieldValue('password') === value) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                        },
+                                    }),
+                                ]}
+                            >
+                                <Input.Password placeholder='Répéter mot de passe' iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleTwoTone />)} />
+                            </Form.Item>
+                            <Form.Item
+                                name="agreement"
+                                valuePropName="checked"
+                                rules={[
+                                    {
+                                        validator: (_, value) =>
+                                            value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                                    },
+                                ]}
+                            >
+                                <Checkbox>
+                                    {"J'ai lu et j'accepte"} <a className='text-[#0094DA]' href='/policy'>{"la politique de confidentialité"}</a>
+                                </Checkbox>
+                            </Form.Item>
                             <Form.Item className='my-5'>
                                 <button type="submit" className='btn w-full bg-[#0094DA] rounded-[12px] text-white h-[56px]'>
                                     Connexion
@@ -96,7 +124,7 @@ const Login = () => {
                         </div>
                     </Col>
                     <Col md={12}>
-                        <Image src={illustration} alt="illustration" />
+                        <Image src={illustration} className="w-full min-w-max h-full" alt="illustration" />
                     </Col>
                 </Row>
             </div>
@@ -106,4 +134,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

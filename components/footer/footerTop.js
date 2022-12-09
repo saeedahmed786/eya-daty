@@ -8,7 +8,7 @@ import { FiPhoneCall } from "react-icons/fi"
 const FooterTop = () => {
     return (
         <>
-            <div className={" border-b border-gray__color mb-10 pb-10 gap-8 grid grid-cols-footer__columns lg:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
+            <div className={" border-b border-gray__color mb-10 pb-10 gap-8 grid p-4 md:grid-cols-footer__columns md__custom:grid-cols-footer__columns__lg sm__custom:text-center sm__custom:grid-cols-footer__columns__sm"}>
                 <div className={"flex flex-col items-start gap-5 sm:items-center"}>
                     <Image src={Logo} alt={"Logo"} className={" object-contain"} />
                     <p className={"text-light__gray__color text-sm"}>

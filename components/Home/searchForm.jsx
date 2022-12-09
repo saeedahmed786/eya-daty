@@ -13,23 +13,23 @@ export default function SearchForm() {
             <div className="bg-white p-6 rounded-[20px] shadow-lg w-3/4  mt-[-10%]">
                 <div className='px-5 mx-auto'>
                     <form>
-                        <div className="grid grid-cols-4 gap-4">
-                            <div className="form-group mb-6">
+                        <div className="block md:flex justify-around flex-wrap gap-4 mb-6">
+                            <div className="w-full md:w-1/4 form-group mb-2 md:mb-0">
                                 <Select placeholder="Spécialité" className='w-full'>
                                     <Option>jsdhkw</Option>
                                 </Select>
                             </div>
-                            <div className="form-group mb-6">
+                            <div className="w-full md:w-1/4 form-group mb-2 md:mb-0">
                                 <Select placeholder="Wilaya" className='w-full'>
                                     <Option>jsdhkw</Option>
                                 </Select>
                             </div>
-                            <div className="form-group mb-6">
+                            <div className="w-full md:w-1/4 form-group mb-2 md:mb-0">
                                 <Select placeholder="Commune" className='w-full'>
                                     <Option>jsdhkw</Option>
                                 </Select>
                             </div>
-                            <div className="form-group mb-6">
+                            <div className="w-full md:w-1/4 form-group">
                                 <button className="block
                         px-8
                         py-1.5
@@ -42,6 +42,7 @@ export default function SearchForm() {
                         transition
                         ease-in-out
                         h-[48px]
+                        w-full
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none flex items-center">
                                     <Image className='absolute' src={SearchIcon} alt="Search" width={32} />  <span>Chercher</span>
@@ -63,7 +64,7 @@ export default function SearchForm() {
                                 Historique des recherces
                             </p>
                         </div>
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center flex-wrap gap-4 justify-between">
                             {/*flex flex-wrap justify-start space-x-3 space-y-3*/}
                             <SearchChips chiptitle="Generaliste Oran" />
                             <SearchChips chiptitle="Cardiologie Medea" />
