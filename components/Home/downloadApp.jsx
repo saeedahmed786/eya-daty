@@ -35,7 +35,7 @@ export default function DownloadApp({ noMargin }) {
             </button>
           </div>
         </div>
-        <div className='sm:w-2/5 flex items-end mt-12 sm:mt-0'>
+        <div className='sm:w-2/5 hidden sm:flex items-end mt-12 sm:mt-0'>
           <Image src={apphand} alt="Appholding hand" height={400} width={400} />
         </div>
       </div>

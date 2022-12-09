@@ -28,7 +28,7 @@ const Login = () => {
                         <h1 className='text-[64px] leading-[72px] font-[700]'>Connectez-vous à votre compte</h1>
                         <div className='flex gap-2 py-6'>
                             <div>{"Vous n'avez pas de compte ?"}</div>
-                            <a href='/register' className='text-[#0094DA]'>Créer un compte</a>
+                            <a href='/signup' className='text-[#0094DA]'>Créer un compte</a>
                         </div>
                         <Form
                             form={form}
