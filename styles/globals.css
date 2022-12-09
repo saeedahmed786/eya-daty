@@ -140,6 +140,10 @@ a:hover {
     display: block !important;
 }
 
+.ant-form-item-required::before .ant-form-item-required::after {
+    display: none !important;
+}
+
 .bigTitle {
     font-family: 'Poppins';
     font-style: normal;
