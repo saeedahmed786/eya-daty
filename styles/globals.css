@@ -176,7 +176,7 @@ a:hover {
     height: 12px !important;
 }
 
-.FAQ :where(.css-dev-only-do-not-override-1s3dcof).ant-collapse-ghost>.ant-collapse-item .ant-collapse-header {
+.FAQ .ant-collapse-header {
     background: #F5F8FB !important;
     border-radius: 12px !important;
     margin-top: 6px !important;
