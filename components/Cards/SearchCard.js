@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import Doc from "../../assets/doc.jpg"
 import Clinic from "../../assets/clinicimage1.png"
-import Check from "../../assets/checkmark.svg"
+import Check from "../../assets/Checkmark.svg"
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -12,9 +12,7 @@ import { Col, Row } from 'antd';
 import { EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, StarTwoTone } from '@ant-design/icons'
 
 const SearchCard = () => {
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [swiperObj, setSwiperObj] = useState();
-    const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
         <div className='SearchCard'>

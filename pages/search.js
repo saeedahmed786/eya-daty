@@ -5,8 +5,6 @@ import React from 'react'
 import Map from "../assets/Map.svg"
 import SearchCard from '../components/Cards/SearchCard'
 import Footer from '../components/footer/footer'
-import DownloadApp from '../components/Home/downloadApp'
-import Subscribe from '../components/Home/subscribe'
 import SearchInputs from '../components/Inputs/SearchInputs'
 import SelectBox from '../components/Inputs/SelectBox'
 import RightIcon from '../icons/righticon'
