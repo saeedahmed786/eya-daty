@@ -77,6 +77,30 @@ const Blogs = () => {
                                 <div className='name'>Chirurgie dentaire</div>
                                 <div className='count'>100</div>
                             </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
+                            <button className='catCard my-4'>
+                                <div className='name'>Chirurgie dentaire</div>
+                                <div className='count'>100</div>
+                            </button>
                         </div>
                     </Col>
                     <Col md={18} className="pl-12 pt-8">
@@ -103,7 +127,7 @@ const Blogs = () => {
                             </Col>
                         </Row>
                         <div className='paginationCon my-12'>
-                            <Pagination total={500} itemRender={itemRender} />
+                            <Pagination total={500} itemRender={itemRender} showSizeChanger={false} />
                         </div>
                     </Col>
                 </Row>
