@@ -89,9 +89,9 @@ const Blog = () => {
                             <div className='my-12'>
                                 <h3>Commentaires</h3>
                                 <CommentCard />
-                            </div>
-                            <div className='my-12'>
-                                <AddComment />
+                                <div className='my-12'>
+                                    <AddComment />
+                                </div>
                             </div>
                         </div>
                     </Col>

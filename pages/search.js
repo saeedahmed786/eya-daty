@@ -1,7 +1,7 @@
 import { AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Col, Pagination, Row } from 'antd'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Map from "../assets/Map.svg"
 import SearchCard from '../components/Cards/SearchCard'
 import Footer from '../components/footer/footer'
@@ -10,6 +10,7 @@ import SelectBox from '../components/Inputs/SelectBox'
 import RightIcon from '../icons/righticon'
 
 const Search = () => {
+    const [gridCol, setGridCol] = useState(24);
     const itemRender = (_, type, originalElement) => {
         if (type === 'prev') {
             return <button className='prevBtn'>Précédent</button>;
@@ -57,35 +58,44 @@ const Search = () => {
                             <div className='flex gap-2 items-center filterBtn'>
                                 <span>Affichage</span>
                                 <div>
-                                    <button className='btn'>
+                                    <button className={`btn ${gridCol === 12 && "focused"}`} onClick={() => setGridCol(12)}>
                                         <AppstoreOutlined />
                                     </button>
                                 </div>
                                 <div>
-                                    <button className='btn'>
+                                    <button className={`btn ${gridCol === 24 && "focused"}`} onClick={() => setGridCol(24)}>
                                         <UnorderedListOutlined />
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
-                        <div className='my-4'>
-                            <SearchCard />
-                        </div>
+                        <Row gutter={[12, 12]}>
+                            <Col md={gridCol}>
+                                <div>
+                                    <SearchCard gridCol={gridCol} />
+                                </div>
+                            </Col>
+                            <Col md={gridCol}>
+                                <div>
+                                    <SearchCard gridCol={gridCol} />
+                                </div>
+                            </Col>
+                            <Col md={gridCol}>
+                                <div>
+                                    <SearchCard gridCol={gridCol} />
+                                </div>
+                            </Col>
+                            <Col md={gridCol}>
+                                <div>
+                                    <SearchCard gridCol={gridCol} />
+                                </div>
+                            </Col>
+                            <Col md={gridCol}>
+                                <div>
+                                    <SearchCard gridCol={gridCol} />
+                                </div>
+                            </Col>
+                        </Row>
                         <div className='paginationCon my-12'>
                             <Pagination total={500} itemRender={itemRender} showSizeChanger={false} />
                         </div>

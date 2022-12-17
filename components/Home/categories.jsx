@@ -1,5 +1,4 @@
 import React from 'react'
-// import aboutimg from '../../public/aboutusimage.png'
 import icon from '/assets/Icon.png'
 import icon1 from '/assets/Icon-1.png'
 import icon2 from '/assets/Icon-2.png'
@@ -9,7 +8,12 @@ import icon5 from '/assets/Icon-5.png'
 import LeftIcon from '../../icons/lefticon'
 import RightIcon from '../../icons/righticon'
 import CategoryCard from './categoryCard'
+import { useRouter } from 'next/router'
+
+
 export default function Categories() {
+  const router = useRouter();
+
   return (
     <section className="text-gray-600 body-font bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
       <div className="container py-16 mx-auto ">
@@ -27,7 +31,7 @@ export default function Categories() {
             </button>
           </div>
         </div>
-        <div className="flex text-center overflow-x-auto">
+        <div className="flex gap-4 text-center overflow-x-auto mb-12">
           <CategoryCard imagevar={icon} cattitle="Generaliste" />
           <CategoryCard imagevar={icon1} cattitle="Chirugie Dentaire" />
           <CategoryCard imagevar={icon2} cattitle="ORL" />
@@ -37,7 +41,7 @@ export default function Categories() {
         </div>
         <div className='w-full flex justify-center'>
           <div className="flex w-full md:justify-center justify-center items-end ">
-            <button className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3"><span>Voir tous les categorie </span> <RightIcon /></button>
+            <button onClick={() => router.push("/categories")} className="text-white text-left bg-siteblue border-0 py-2 px-16 focus:outline-none hover:bg-sitegreen rounded-xl text-lg flex items-center gap-3"><span>Voir tous les categorie </span> <RightIcon /></button>
           </div>
         </div>
       </div>

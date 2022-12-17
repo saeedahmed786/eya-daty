@@ -3,21 +3,35 @@ import React, { useState } from 'react'
 import Doc from "../../assets/doc.jpg"
 import Clinic from "../../assets/clinicimage1.png"
 import Check from "../../assets/Checkmark.svg"
+import Trash from "../../assets/trash.svg"
+import Delete from "../../assets/Button.svg"
+import CloseIcon from "../../assets/closeIcon.svg"
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from 'swiper';
-import { Col, Row } from 'antd';
 import { EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, StarTwoTone } from '@ant-design/icons'
+import { Modal } from 'antd'
+import Link from 'next/link'
 
-const SearchCard = () => {
+const SearchCard = ({ gridCol, favourite }) => {
     const [swiperObj, setSwiperObj] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className='SearchCard'>
-            <Row gutter={[10, 10]}>
-                <Col sm={7}>
+            <div className='flex flex-wrap'>
+                <div style={gridCol === 12 ? { minWidth: "228px", width: "100%" } : { maxWidth: "30%", width: "30%" }}>
                     <Swiper onSwiper={(swiper) => setSwiperObj(swiper)} pagination={true} modules={[Pagination]} className="mySwiper">
                         <SwiperSlide>
                             <Image src={Doc} alt="Doctor" />
@@ -48,23 +62,52 @@ const SearchCard = () => {
                             </button>
                         </div>
                     </div>
-                </Col>
-                <Col md={17} className='inner mt-4'>
-                    <div className='nameAndPic flex items-center gap-2'>
-                        <div className='profileImg'>
-                            <Image src={Doc} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
-                        </div>
-                        <div>
-                            <div className='flex gap-2'>
-                                <h6>Dr. Mechri Nasser</h6>
-                                <Image src={Check} alt="Checkmark" />
+                </div>
+                <div className='inner mt-4' style={gridCol === 12 ? { paddingLeft: "0px", width: "100%" } : { paddingLeft: "15px", width: "70%" }}>
+                    <div className='nameAndPic w-full flex justify-between pr-6'>
+                        <div className='flex items-center gap-2'>
+                            <div className='profileImg'>
+                                <Image src={Doc} alt="Doctor" width={32} height={32} className="rounded-[50%]" />
                             </div>
-                            <p className='mt-2'>Ophtalmologie</p>
+                            <div className='w-full'>
+                                <div className='flex gap-2'>
+                                    <h6>Dr. Mechri Nasser</h6>
+                                    <Image src={Check} alt="Checkmark" />
+                                </div>
+                                <p className='mt-2 text-left'>Ophtalmologie</p>
+                            </div>
                         </div>
+                        {
+                            favourite &&
+                            <div>
+                                <button onClick={showModal}>
+                                    <Image src={Delete} alt="Delete" />
+                                </button>
+                                <Modal centered className='deleteModal' title={false} footer={false} visible={isModalOpen} onCancel={handleCancel}>
+                                    <div>
+                                        <div className='text-end closeIcon'>
+                                            <button onClick={handleCancel}>
+                                                <Image src={CloseIcon} alt="CloseIcon" />
+                                            </button>
+                                        </div>
+                                        <div className='text-center'>
+                                            <Image src={Trash} alt="Trash" />
+                                            <h2 className='mt-4'>
+                                                {"Voulez-vous vraiment supprimer l'élément ?"}
+                                            </h2>
+                                            <div className='mt-8 flex justify-between gap-4'>
+                                                <button>Supprimer</button>
+                                                <button>Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            </div>
+                        }
                     </div>
-                    <div className='flex items-center mt-8 gap-1'>
+                    <div className='flex mt-8 gap-1'>
                         <EnvironmentTwoTone />
-                        <p className='normalPara'>Quartier des 400 logements,  à côté du marché couvert, Beni Slimane, Médea</p>
+                        <p className='w-full text-left'>Quartier des 400 logements,  à côté du marché couvert, Beni Slimane, Médea</p>
                     </div>
                     <div className='flex gap-2 mt-8 items-end'>
                         <button className='flex gap-1 items-center'>
@@ -80,9 +123,9 @@ const SearchCard = () => {
                             <span>4.8</span>
                         </button>
                     </div>
-                </Col>
-            </Row>
-        </div >
+                </div>
+            </div>
+        </div>
     )
 }
 

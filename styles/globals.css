@@ -82,6 +82,10 @@ a:hover {
     border: none !important;
 }
 
+.ant-select .ant-select-selector input {
+    height: 48px !important;
+}
+
 .ant-select-dropdown {
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.08)) !important;
     border-radius: 12px;
@@ -179,6 +183,12 @@ a:hover {
     height: 12px !important;
 }
 
+.categoryCard {
+    width: 20vw;
+    /* min-width: 200px; */
+    text-align: center;
+}
+
 .FAQ .ant-collapse-header {
     background: #F5F8FB !important;
     border-radius: 12px !important;
@@ -254,6 +264,19 @@ a:hover {
     padding-right: 2rem !important;
 }
 
+
+.SelectBoxSelect .ant-space-item .ant-input,
+.SelectBoxSelect .ant-space-item .ant-input-affix-wrapper {
+    background-color: transparent !important;
+    border: 0px !important;
+    height: 48px;
+}
+
+.selectDropdown .ant-select-item-option {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
 
 
 /**************************** Blog Page *************************/
@@ -472,8 +495,20 @@ a:hover {
     height: 87px !important;
 }
 
-.Blog .AddComment textarea,
-.Blog .CommentCard textarea {
+.AddComment h3,
+.CommentCard h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+    margin: 23px 0px;
+}
+
+.AddComment textarea,
+.CommentCard textarea {
     border: 1px solid #C0C5CE;
     border-radius: 12px;
     height: 140px;
@@ -481,7 +516,7 @@ a:hover {
     padding: 15px;
 }
 
-.Blog .AddComment button {
+.AddComment button {
     background: #0094DA;
     border-radius: 12px;
     height: 48px;
@@ -577,14 +612,14 @@ a:hover {
     /* min-width: 20vw !important; */
 }
 
-.SearchPage .catCard .name {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.02em;
-    color: #333B42;
+.SearchPage .ant-select .ant-select-selector {
+    background: #fff !important;
+    border: 1px solid #0094DA !important;
+    border-radius: 12px;
+}
+
+.SearchPage .ant-select .anticon-down {
+    color: black !important;
 }
 
 .SearchPage .filterBtn button {
@@ -597,7 +632,7 @@ a:hover {
     justify-content: center;
 }
 
-.SearchPage .filterBtn button:focus {
+.SearchPage .filterBtn button.focused {
     background: #0094DA;
     color: white;
 }
@@ -608,56 +643,35 @@ a:hover {
     gap: 10px;
 }
 
-.SearchPage .catCard .name {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.02em;
-    color: #333B42;
-}
-
-.SearchPage .catCard .count {
-    background: #0094DA;
-    border-radius: 12px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    width: 36px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .SearchCard .swiper-slide {
     width: 100% !important;
     height: 140px !important;
+    /* max-height: 240px !important; */
 }
 
 .SearchCard {
     background: #FFFFFF;
     border: 2px solid #0094DA;
     border-radius: 24px;
-    padding: 23px;
+    padding: 10px;
 }
 
 .SearchCard .swiper-slide-active span {
     width: 100% !important;
     height: 140px !important;
+    object-fit: cover !important;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 61.48%, rgba(0, 0, 0, 0.6) 127.51%);
     border-radius: 16px;
+}
+
+.SearchCard .swiper-slide-active img {
+    object-fit: cover !important;
 }
 
 .SearchCard .thumbImages>div {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     overflow-x: auto;
     margin-top: 10px;
@@ -686,4 +700,337 @@ a:hover {
     justify-content: center;
     align-items: center;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+
+/******* Doctor Details page ******/
+.DoctorDetails .nameAndPic h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.DoctorDetails .profileImg {
+    background: #FFFFFF !important;
+    padding: 10px;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.DoctorDetails .iconsContainter {
+    display: flex;
+    gap: 10px;
+}
+
+.DoctorDetails .iconsContainter div {
+    border: 1px solid #0094DA;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DoctorDetails .imagesContainer span {
+    object-fit: cover !important;
+    border-radius: 24px;
+}
+
+.DoctorDetails .imagesContainer .smallImages>div span {
+    width: 264px !important;
+    height: 264px !important;
+}
+
+.DoctorDetails .imagesContainer .smallImages>div img {
+    width: 264px !important;
+    height: 264px !important;
+}
+
+.DoctorDetails .likeContantainer {
+    text-align: center;
+    margin-top: 43px;
+    background: #FFFFFF;
+    border: 1px solid #C0C5CE;
+    border-radius: 24px;
+    padding: 23px;
+}
+
+.DoctorDetails .likeContantainer button {
+    background: #FF6551;
+    border-radius: 12px;
+    width: 20%;
+    height: 48px;
+    justify-content: center;
+    gap: 6px;
+    color: white;
+}
+
+.DoctorDetails .likeContantainer button:last-of-type {
+    background: #29C773;
+}
+
+.DoctorDetails section .header {
+    background: #F5F8FB;
+    height: 72px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0px 10px;
+    margin-bottom: 28px;
+}
+
+.DoctorDetails section .header h4 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.DoctorDetails section .count {
+    background: #0094DA;
+    border-radius: 32px;
+    padding: 4px 8px;
+    color: white;
+}
+
+.DoctorDetails section ul {
+    /* list-style: outside; */
+    color: #1C2126;
+}
+
+.DoctorDetails section ul li {
+    margin-top: 23px;
+}
+
+.DoctorDetails section ul li::before {
+    content: "\2022";
+    color: #93C01F;
+    font-size: 23px;
+    vertical-align: middle;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
+
+.DoctorDetails section .calendar h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333B42;
+}
+
+
+
+/**************************** Favourites *************************/
+.Favourites .searchBox select,
+.Favourites .searchBox input {
+    min-width: fit-content !important;
+}
+
+.Favourites select {
+    padding-right: 17px !important;
+}
+
+.Favourites .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+.Favourites .catCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Favourites .catCard .name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #333B42;
+}
+
+.Favourites .catCard .count {
+    background: #0094DA;
+    border-radius: 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    width: 36px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.deleteModal {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    max-width: 430px;
+}
+
+.deleteModal .ant-modal-content {
+    padding: 43px;
+    padding-top: 20px;
+    padding-bottom: 32px;
+    background: #FFFFFF;
+    border-radius: 24px;
+}
+
+.deleteModal h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #1C2126;
+}
+
+.deleteModal button {
+    background: #0094DA;
+    border-radius: 12px;
+    height: 48px;
+    width: 50%;
+    color: white;
+}
+
+.deleteModal .ant-modal-content button:last-of-type {
+    background: #C0C5CE;
+    color: black;
+}
+
+.deleteModal .ant-modal-close {
+    display: none;
+}
+
+.deleteModal .ant-modal-content .closeIcon button {
+    background: transparent !important;
+    padding: 0px !important;
+    width: fit-content !important;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+    width: 210px;
+}
+
+
+
+/********* Profile *********/
+.ProfileLayout .Profile {
+    position: relative;
+}
+
+.ProfileLayout .uploadBtn {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #0094DA;
+}
+
+.ProfileLayout .uploadBtn {
+    border: 1px solid #0094DA;
+    border-radius: 12px;
+    height: 48px;
+    padding: 0px 21px;
+}
+
+.ProfileLayout .uploadBtn .arrowUp {
+    border: 1px solid #0094DA;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProfileLayout .deleteBtn {
+    background: #FF6551;
+    border-radius: 12px;
+    height: 48px;
+    padding: 0px 23px;
+    color: white;
+}
+
+.ProfileLayout .ant-select .ant-select-selector,
+.ProfileLayout .ant-picker {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
+    height: 48px !important;
+}
+
+.ProfileLayout .ant-input-affix-wrapper input {
+    padding-left: 10px;
+}
+
+.ProfileLayout .ant-row {
+    display: flex !important;
+}
+
+.ant-upload-drag {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px !important;
+}
+
+.Invite .iconsContainer span,
+.Invite .iconsContainer img {
+    width: 48px !important;
+    height: 48px !important;
+    max-height: 100% !important;
 }

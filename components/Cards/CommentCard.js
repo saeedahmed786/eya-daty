@@ -12,7 +12,7 @@ const CommentCard = () => {
                 </div>
                 <div>
                     <strong>Selma Achref</strong>
-                    <p className='normalPara my-2'>Diplômé d’un doctorat en pharmacie de l’université de Reims, Paul Musset est passionné de médecine naturelle et de nutrition sportive.</p>
+                    <p className='normalPara my-2'>Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.</p>
                     <div className='reactionCont flex gap-8'>
                         <button className='flex gap-2 items-center'>
                             <LikeOutlined />

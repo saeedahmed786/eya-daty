@@ -19,8 +19,8 @@ export default function Navbar() {
         </a>
         <nav className="md:mr-auto gap-4 md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           <Link href="/" className="mr-5 hover:text-yellow hover:text-[#0094DA]">Accueli</Link>
-          <Link href="/" className="mr-5 hover:text-[#0094DA]">A propos de nous</Link>
-          <Link href="/" className="mr-5 hover:text-[#0094DA]">Contactez-nous</Link>
+          <Link href="/about-us" className="mr-5 hover:text-[#0094DA]">A propos de nous</Link>
+          <Link href="/contact-us" className="mr-5 hover:text-[#0094DA]">Contactez-nous</Link>
         </nav>
         <div className='w-1/2 flex flex-row gap-20 justify-end'>
           <div className='lg:block w-2/5 relative'>
@@ -30,7 +30,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className='flex items-center gap-2'>
-            <button className="focus:outline-0 min-w-[100px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
+            <button onClick={() => router.push("/signup")} className="focus:outline-0 min-w-[100px] w-full border bg-transparent border-[#0094DA] text-[#0094DA] rounded-[12px] p-2">
               S`inscrire
             </button>
             <button onClick={() => router.push("/login")} className="focus:outline-0 min-w-[100px] w-full bg-[#0094DA] hover:text-white text-white rounded-[12px] p-2">

@@ -26,7 +26,7 @@ export default function TopNavbar() {
             </p>
           </div>
           <div className=' text-white p-2'>
-            Blog
+            <Link href="/blogs">Blog</Link>
           </div>
           <div className='relative'>
             <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-2 flex items-center gap-2'>

@@ -1,8 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import apphand from '/assets/doctor.svg'
+import { useRouter } from 'next/router'
 
 export default function Doctor() {
+    const router = useRouter();
+
     return (
         <div className="bg-gray-700 w-full">
             <div className="flex flex-row p-4 sm:p-0 flex-wrap justify-between mt-12 px-5 container mx-auto mb-12 bg-center bg-opacity-5 bg-cover bg-no-repeat">
@@ -16,7 +19,7 @@ export default function Doctor() {
                         Nous éliminons les conjectures pour trouver les bons médecins, hôpitaux et soins pour vous et votre famille.
                     </h3>
                     <div className='space-x-3'>
-                        <button className="bg-transparent border-white border-2 rounded w-[250px] h-[50px] text-white">
+                        <button onClick={() => router.push("/search")} className="bg-transparent border-white border-2 rounded w-[250px] h-[50px] text-white">
                             Trouver un docteur
                         </button>
                     </div>
