@@ -14,19 +14,10 @@ import { Pagination } from 'swiper';
 import { EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, StarTwoTone } from '@ant-design/icons'
 import { Modal } from 'antd'
 import Link from 'next/link'
+import DeleteModal from '../DeleteModal'
 
 const SearchCard = ({ gridCol, favourite }) => {
     const [swiperObj, setSwiperObj] = useState();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
 
     return (
         <div className='SearchCard'>
@@ -80,28 +71,7 @@ const SearchCard = ({ gridCol, favourite }) => {
                         {
                             favourite &&
                             <div>
-                                <button onClick={showModal}>
-                                    <Image src={Delete} alt="Delete" />
-                                </button>
-                                <Modal centered className='deleteModal' title={false} footer={false} visible={isModalOpen} onCancel={handleCancel}>
-                                    <div>
-                                        <div className='text-end closeIcon'>
-                                            <button onClick={handleCancel}>
-                                                <Image src={CloseIcon} alt="CloseIcon" />
-                                            </button>
-                                        </div>
-                                        <div className='text-center'>
-                                            <Image src={Trash} alt="Trash" />
-                                            <h2 className='mt-4'>
-                                                {"Voulez-vous vraiment supprimer l'élément ?"}
-                                            </h2>
-                                            <div className='mt-8 flex justify-between gap-4'>
-                                                <button>Supprimer</button>
-                                                <button>Annuler</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Modal>
+                                <DeleteModal deleteBtn={<Image src={Delete} alt="Delete" />} />
                             </div>
                         }
                     </div>

@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import illustration from "../assets/terms.svg"
-import Footer from '../components/footer/footer'
+import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 
 
 const PrivacyPolicy = () => {
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto pb-24 pt-6'>
                 <div className='flex justify-center align-middle text-center'>
                     <Image src={illustration} alt="illustration" className='w-full' />
@@ -120,8 +120,7 @@ const PrivacyPolicy = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

@@ -1,10 +1,10 @@
 import { Col, Pagination, Row } from 'antd'
 import React from 'react'
 import SearchCard from '../components/Cards/SearchCard'
-import Footer from '../components/footer/footer'
 import DownloadApp from '../components/Home/downloadApp'
 import Subscribe from '../components/Home/subscribe'
 import SearchInputs from '../components/Inputs/SearchInputs'
+import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 
 const Favourites = () => {
@@ -19,7 +19,7 @@ const Favourites = () => {
         return originalElement;
     };
     return (
-        <>
+        <MainLayout navbar>
             <div className='Favourites px-0 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Favoris </button>
@@ -90,8 +90,7 @@ const Favourites = () => {
             </div>
             <DownloadApp noMargin={true} />
             <Subscribe noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

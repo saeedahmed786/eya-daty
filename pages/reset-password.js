@@ -5,8 +5,8 @@ import RightIcon from '../icons/righticon'
 import illustration from "../assets/reset.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
-import Footer from '../components/footer/footer'
 import Link from 'next/link'
+import MainLayout from '../components/Layouts/MainLayout'
 
 const ResetPassword = () => {
     const [form] = Form.useForm();
@@ -15,7 +15,7 @@ const ResetPassword = () => {
     };
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
                 <Row className='py-0' align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
@@ -78,8 +78,7 @@ const ResetPassword = () => {
                 </Row>
             </div>
             <DownloadApp noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

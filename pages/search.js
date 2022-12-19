@@ -4,9 +4,9 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import Map from "../assets/Map.svg"
 import SearchCard from '../components/Cards/SearchCard'
-import Footer from '../components/footer/footer'
 import SearchInputs from '../components/Inputs/SearchInputs'
 import SelectBox from '../components/Inputs/SelectBox'
+import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 
 const Search = () => {
@@ -21,7 +21,7 @@ const Search = () => {
         return originalElement;
     };
     return (
-        <>
+        <MainLayout navbar>
             <div className='SearchPage px-0 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-start items-center py-4'>
                     <span>Accueil</span>
@@ -107,8 +107,7 @@ const Search = () => {
                     </Col>
                 </Row>
             </div>
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

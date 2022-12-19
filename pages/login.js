@@ -1,6 +1,5 @@
 import { Col, Divider, Form, Input, Row, Switch } from 'antd'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import RightIcon from '../icons/righticon'
 import google from "../assets/google.svg"
@@ -9,8 +8,8 @@ import twitter from "../assets/twitter.svg"
 import illustration from "../assets/Illustration.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
-import Footer from '../components/footer/footer'
 import { useRouter } from 'next/router'
+import MainLayout from '../components/Layouts/MainLayout'
 
 const Login = () => {
     const [form] = Form.useForm();
@@ -20,7 +19,7 @@ const Login = () => {
     };
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
                 <div className='flex gap-2 items-center'>
                     <span>Accueil</span> <RightIcon />  <button className='text-[#0094DA] border-0' onClick={() => router.push("/signup")}>Connexion</button>
@@ -103,8 +102,7 @@ const Login = () => {
                 </Row>
             </div>
             <DownloadApp noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

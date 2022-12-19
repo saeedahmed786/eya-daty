@@ -5,12 +5,16 @@ import React from 'react'
 import RightIcon from '../../icons/righticon'
 import Footer from '../footer/footer'
 import DownloadApp from '../Home/downloadApp'
+import Navbar from '../navbar'
+import TopNavbar from '../topNavbar'
 
 const ProfileLayout = (props) => {
     const router = useRouter();
 
     return (
         <>
+            <TopNavbar />
+            <Navbar />
             <div className='ProfileLayout container px-5 mx-auto pb-24 pt-6'>
                 <div className='text-center'>
                     <div className='flex gap-2 justify-center items-center py-4'>

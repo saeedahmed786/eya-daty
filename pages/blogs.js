@@ -1,14 +1,13 @@
 import { AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Col, Pagination, Row } from 'antd'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import SearchIcon from "../assets/search.svg"
 import BlogCard from '../components/Cards/BlogCard'
-import Footer from '../components/footer/footer'
 import DownloadApp from '../components/Home/downloadApp'
 import Subscribe from '../components/Home/subscribe'
+import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 
 const Blogs = () => {
@@ -24,7 +23,7 @@ const Blogs = () => {
         return originalElement;
     };
     return (
-        <>
+        <MainLayout navbar>
             <div className='blogsPage px-0 sm:px-24 py-8'>
                 <div className='flex gap-2 justify-center items-center py-4'>
                     <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]' href="/faq">Blog</button>
@@ -134,8 +133,7 @@ const Blogs = () => {
             </div>
             <DownloadApp noMargin={true} />
             <Subscribe noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

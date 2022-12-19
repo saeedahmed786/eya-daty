@@ -4,20 +4,24 @@ import galleryIcon from '../../assets/galleryIcon.svg';
 import ProfileLayout from '../../components/Layouts/ProfileLayout'
 import UploadIcon from '../../assets/upload.svg'
 import Image from 'next/image';
-import { ArrowUpOutlined, EnvironmentOutlined, InboxOutlined, InfoCircleFilled, InfoCircleTwoTone, UploadOutlined } from '@ant-design/icons';
-import { Checkbox, Col, DatePicker, Form, Input, Radio, Row, Select, Switch, Upload } from 'antd';
+import { ArrowUpOutlined, EnvironmentOutlined, InfoCircleFilled } from '@ant-design/icons';
+import { Checkbox, Col, Form, Input, Radio, Row, Select, Upload } from 'antd';
 import ProfileSelectBox from '../../components/Profile/ProfileSelectBox';
+import NotesModal from '../../components/Admin/NotesModal';
 
 const { Option } = Select;
 
 const CreatePage = () => {
     const [file, setFile] = useState();
     const [gender, setGender] = useState("Male");
+    const [selectedNotes, setSelectedNotes] = useState([]);
+    const [selectedServices, setSelectedServices] = useState([]);
     const [form] = Form.useForm();
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
 
+    console.log(selectedNotes);
 
     const normFile = (e) => {
         console.log('Upload event:', e);
@@ -26,6 +30,37 @@ const CreatePage = () => {
         }
         return e?.fileList;
     };
+
+
+    const notes = [
+        "Les rendez-vous peuvent être pris par téléphone",
+        "Ne soyez pas en retard à un rendez-vous",
+        "Les rendez-vous sont pris le soir",
+        "Consultation sur R.D.V",
+        "Congé annuel 02 août - 22 août",
+        "Examen sur rendez-vous",
+        "Horaires spéciaux Covid-19",
+        "Consultation sur Rendez-vous",
+        "Pour prendre rendez-vous, veuillez appeler",
+        "Veuillez apporter la carte d'examen",
+        "Examen uniquement sur rendez-vous",
+        "Consultation par tour de role"
+    ];
+
+    const services = [
+        "Les rendez-vous peuvent être pris par téléphone",
+        "Ne soyez pas en retard à un rendez-vous",
+        "Les rendez-vous sont pris le soir",
+        "Consultation sur R.D.V",
+        "Congé annuel 02 août - 22 août",
+        "Examen sur rendez-vous",
+        "Horaires spéciaux Covid-19",
+        "Consultation sur Rendez-vous",
+        "Pour prendre rendez-vous, veuillez appeler",
+        "Veuillez apporter la carte d'examen",
+        "Examen uniquement sur rendez-vous",
+        "Consultation par tour de role"
+    ];
 
     return (
         <ProfileLayout sidebar>
@@ -246,6 +281,7 @@ const CreatePage = () => {
                                 }
                             ]}
                         >
+                            <NotesModal notes={services} title="Ajouter une note" handleUpdate={(value) => setSelectedNotes(value)} />
                             <button className='text-[#0094DA] font-[500]'>Ajouter une note</button>
                         </Form.Item>
                         <Form.Item
@@ -286,7 +322,7 @@ const CreatePage = () => {
                             </Row>
                         </div>
                         <Form.Item
-                            name="notes"
+                            name="services"
                             label="Services"
                             className='mt-2'
                             hasFeedback
@@ -297,7 +333,8 @@ const CreatePage = () => {
                                 }
                             ]}
                         >
-                            <button className='text-[#0094DA] font-[500]'>Ajouter une note</button>
+                            <NotesModal title="Ajouter une services" notes={services} handleUpdate={(value) => setSelectedServices(value)} />
+                            {/* <button className='text-[#0094DA] font-[500]'>Ajouter une note</button> */}
                         </Form.Item>
                         <Form.Item label="Dragger">
                             <label>

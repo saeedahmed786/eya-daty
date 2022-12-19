@@ -9,7 +9,7 @@ import twitter from "../assets/twitter.svg"
 import illustration from "../assets/signup.svg"
 import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
-import Footer from '../components/footer/footer'
+import MainLayout from '../components/Layouts/MainLayout'
 
 const Signup = () => {
     const [form] = Form.useForm();
@@ -18,7 +18,7 @@ const Signup = () => {
     };
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
                 <div className='flex gap-2 items-center'>
                     <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
@@ -129,8 +129,7 @@ const Signup = () => {
                 </Row>
             </div>
             <DownloadApp noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

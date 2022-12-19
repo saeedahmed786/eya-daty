@@ -14,12 +14,12 @@ import CommentCard from '../../components/Cards/CommentCard'
 import AddComment from '../../components/Cards/AddComment'
 import DownloadApp from '../../components/Home/downloadApp'
 import Subscribe from '../../components/Home/subscribe'
-import Footer from '../../components/footer/footer'
+import MainLayout from '../../components/Layouts/MainLayout'
 
 
 const Blog = () => {
     return (
-        <>
+        <MainLayout navbar>
             <div className='Blog px-0 py-12 sm:px-24'>
                 <Row gutter={[23, 23]}>
                     <Col md={16}>
@@ -126,8 +126,7 @@ const Blog = () => {
             </div>
             <DownloadApp noMargin={true} />
             <Subscribe noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

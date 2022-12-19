@@ -13,7 +13,7 @@ export default function AboutUs() {
                 </div>
                 <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                     <p className="text-sm  text-sitegreen font-bold mb-5 w-full">À propos de nous</p>
-                    <h1 className="text-7xl sm:text-4xl  mb-4 font-extrabold text-gray-900">Qui sommes nous?</h1>
+                    <h1 className="text-[46px] sm:text-[56px] mb-4 font-extrabold text-gray-900">Qui sommes nous?</h1>
                     <p className="mb-8 leading-relaxed">Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato,
                         Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato,
                         Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato, hella selvage wolf narwhal dreamcatcher.</p>

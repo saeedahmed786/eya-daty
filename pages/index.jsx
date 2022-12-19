@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import PageLoader from "../components/common/loader/page-loader";
+import MainLayout from '../components/Layouts/MainLayout';
 
 const HeroPage = dynamic(() => import('../components/Home/hero'), {
     suspense: true,
@@ -26,9 +27,7 @@ const BlogList = dynamic(() => import('../components/Home/blogList'), {
 const Doctor = dynamic(() => import('../components/Home/doctor'), {
     suspense: true,
 })
-const Footer = dynamic(() => import('../components/footer/footer'), {
-    suspense: true,
-})
+
 const Subscribe = dynamic(() => import('../components/Home/subscribe'), {
     suspense: true,
 })
@@ -38,7 +37,7 @@ const DownloadApp = dynamic(() => import('../components/Home/downloadApp'), {
 
 export default function Home() {
     return (
-        <>
+        <MainLayout navbar>
             <Suspense fallback={<PageLoader />}>
                 <HeroPage />
                 <SearchForm />
@@ -50,14 +49,7 @@ export default function Home() {
                 <Doctor />
                 <BlogList />
                 <Subscribe />
-                <Footer />
             </Suspense>
-        </>
-        // <div className='w-full  bg-blue-500 flex justify-center  items-center '>
-        //   <div className='h-1/2 w-1/2 bg-amber-500 flex justify-center items-center'>
-        //     Hello world
-        //   </div>
-
-        // </div>
+        </MainLayout>
     )
 }

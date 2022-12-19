@@ -8,8 +8,8 @@ import React from 'react'
 import RightIcon from '../icons/righticon'
 import illustration from "../assets/contact.svg"
 import DownloadApp from '../components/Home/downloadApp'
-import Footer from '../components/footer/footer'
 import Link from 'next/link'
+import MainLayout from '../components/Layouts/MainLayout'
 
 const { TextArea } = Input;
 
@@ -20,7 +20,7 @@ const ContactUs = () => {
     };
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
                 <Row align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
@@ -107,8 +107,7 @@ const ContactUs = () => {
                 </Row >
             </div >
             <DownloadApp noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

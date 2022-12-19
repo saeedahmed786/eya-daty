@@ -22,17 +22,14 @@ import Send from "../../assets/Send.svg"
 import Message from "../../assets/Message.svg"
 import CommentCard from '../../components/Cards/CommentCard'
 import AddComment from '../../components/Cards/AddComment'
-import DownloadApp from '../../components/Home/downloadApp'
-import Subscribe from '../../components/Home/subscribe'
-import Footer from '../../components/footer/footer'
-import { DislikeOutlined, DislikeTwoTone, EnvironmentTwoTone, EyeTwoTone, FacebookFilled, FacebookOutlined, HeartTwoTone, LikeOutlined, LikeTwoTone, MailTwoTone, MessageTwoTone, PhoneTwoTone, SendOutlined, StarTwoTone } from '@ant-design/icons'
-import { FiFacebook } from 'react-icons/fi'
+import { DislikeOutlined, EnvironmentTwoTone, EyeTwoTone, HeartTwoTone, LikeOutlined, MessageTwoTone, StarTwoTone } from '@ant-design/icons'
 import Phone from '../../icons/Phone'
+import MainLayout from '../../components/Layouts/MainLayout'
 
 
 const IndDoctor = () => {
     return (
-        <>
+        <MainLayout navbar>
             <div className='DoctorDetails px-0 py-12 sm:px-24'>
                 <div>
                     <div>
@@ -316,8 +313,7 @@ const IndDoctor = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

@@ -2,13 +2,13 @@ import Image from 'next/image'
 import React from 'react'
 import illustration from "../assets/404.svg"
 import DownloadApp from '../components/Home/downloadApp'
-import Footer from '../components/footer/footer'
+import MainLayout from '../components/Layouts/MainLayout'
 
 
 const NotFoundPage = () => {
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto pb-24 pt-6'>
                 <div className='flex justify-center align-middle text-center'>
                     <div>
@@ -22,8 +22,7 @@ const NotFoundPage = () => {
                 </div>
             </div>
             <DownloadApp noMargin={true} />
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

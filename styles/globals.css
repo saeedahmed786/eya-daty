@@ -37,6 +37,48 @@ a:hover {
     color: #0094DA;
 }
 
+.slick-prev:before,
+.slick-next:before {
+    content: url("../assets/rightArrow.svg") !important;
+    display: block;
+    margin: 0px -23px;
+}
+
+.slick-prev:before {
+    transform: rotate(180deg) !important;
+}
+
+.qoutes-white span {
+    width: 56px !important;
+}
+
+.quill .ql-container.ql-snow {
+    background-color: white;
+    min-height: 300px;
+}
+
+.ant-table-cell {
+    width: 100px !important;
+    border-bottom: 1px solid #C0C5CE !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #1C2126;
+}
+
+.textElipsisTwoLines {
+    max-width: 200px !important;
+    padding-right: 0px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+}
+
 @media screen and (min-width: 1399px) {
     .container {
         width: 1320px !important;
@@ -270,12 +312,14 @@ a:hover {
     background-color: transparent !important;
     border: 0px !important;
     height: 48px;
+    width: 100% !important;
 }
 
 .selectDropdown .ant-select-item-option {
     height: 48px;
     display: flex;
     align-items: center;
+    width: 100% !important;
 }
 
 
@@ -972,7 +1016,7 @@ a:hover {
     position: relative;
 }
 
-.ProfileLayout .uploadBtn {
+.uploadBtn {
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -981,7 +1025,7 @@ a:hover {
     color: #0094DA;
 }
 
-.ProfileLayout .uploadBtn {
+.uploadBtn {
     border: 1px solid #0094DA;
     border-radius: 12px;
     height: 48px;
@@ -1033,4 +1077,173 @@ a:hover {
     width: 48px !important;
     height: 48px !important;
     max-height: 100% !important;
+}
+
+
+
+
+
+/********** Admin ********/
+.AdminLayout .AdminNavbar .searchBox input {
+    background: #F5F8FB;
+    border-radius: 12px;
+}
+
+.AdminLayout .adminPagination .rc-pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F5F8FB;
+    border-radius: 16px;
+    padding: 0px 6px;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-item {
+    border-radius: 29px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-item-active {
+    background: #0094DA;
+    border-radius: 29px;
+    color: white;
+}
+
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-jump-next::after,
+.AdminLayout .adminPagination .rc-pagination .rc-pagination-jump-prev::after {
+    content: ".....";
+}
+
+.ant-table-thead tr .ant-table-cell {
+    background: #93C01F !important;
+    color: white !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    color: #FFFFFF;
+}
+
+.ant-table-thead tr .ant-table-cell:first-of-type {
+    border-top-left-radius: 16px !important;
+}
+
+.ant-table-thead tr .ant-table-cell:last-of-type {
+    border-top-right-radius: 16px !important;
+}
+
+.ant-table-cell::before {
+    display: none;
+}
+
+.AdminLayout .profileImg {
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ant-table-column-sorter-inner .anticon svg {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ant-table-column-sorter-inner .anticon.active svg {
+    color: white;
+}
+
+.AdminLayout .tag.active {
+    background: rgba(41, 199, 115, 0.25);
+    border-radius: 17px;
+    padding: 4px, 8px, 4px, 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #29C773;
+    text-transform: capitalize;
+}
+
+.AdminLayout .tag.pending {
+    background: rgba(250, 215, 35, 0.25);
+    border-radius: 17px;
+    padding: 4px, 8px, 4px, 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FAD723;
+    text-transform: capitalize;
+}
+
+.AdminLayout .Pages .ant-select .ant-select-selector {
+    background-color: white !important;
+    border: 1px solid #C0C5CE !important;
+    border-radius: 12px;
+}
+
+.AdminLayout .Pages .ant-space .ant-space-item {
+    width: 100%;
+}
+
+.AdminLayout .Pages .SelectBoxSelect .ant-space-item .ant-input-affix-wrapper {
+    max-width: 400px !important;
+}
+
+.AdminLayout .ant-form .ant-row {
+    display: flex;
+}
+
+.notesModal .ant-modal-content {
+    margin: 60px 0px;
+}
+
+.notesModal .ant-modal-close-x {
+    display: none;
+}
+
+.tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #0094DA;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    background-color: #0094DA;
+}
+
+.tooltip .tooltip-top::before {
+    top: 100%;
+    bottom: auto;
+    border-top: none;
+    border-bottom: 5px solid #0094DA;
+}
+
+.tooltip .tooltip-top::after {
+    top: 100%;
+    bottom: auto;
 }

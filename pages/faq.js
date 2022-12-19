@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import illustration from "../assets/faq.svg"
-import Footer from '../components/footer/footer'
+import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 
 const { Panel } = Collapse;
@@ -16,7 +16,7 @@ const FAQ = () => {
     `
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto pb-24 pt-6 FAQ'>
                 <div className='flex justify-center align-middle text-center'>
                     <Image src={illustration} alt="illustration" className='w-full' />
@@ -56,11 +56,9 @@ const FAQ = () => {
                             </Panel>
                         </Collapse>
                     </div>
-
                 </div>
             </div>
-            <Footer />
-        </>
+        </MainLayout>
     )
 }
 

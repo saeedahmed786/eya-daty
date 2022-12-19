@@ -7,6 +7,7 @@ import illustration from "../assets/forgot.svg"
 import DownloadApp from '../components/Home/downloadApp'
 import Footer from '../components/footer/footer'
 import { useRouter } from 'next/router'
+import MainLayout from '../components/Layouts/MainLayout'
 
 const ForgotPassword = () => {
     const [form] = Form.useForm();
@@ -17,7 +18,7 @@ const ForgotPassword = () => {
     };
 
     return (
-        <>
+        <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
                 <Row className='py-0' align="middle">
                     <Col md={12} className="pr-0 md:pr-24">
@@ -63,7 +64,7 @@ const ForgotPassword = () => {
             </div>
             <DownloadApp noMargin={true} />
             <Footer />
-        </>
+        </MainLayout>
     )
 }
 
