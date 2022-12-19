@@ -148,7 +148,7 @@ const Pages = () => {
                         <span>Accueil</span> <RightIcon /> <button className='text-[#0094DA]'>Les pages</button>
                     </div>
                     <div>
-                        <button className='flex items-center gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
+                        <button onClick={() => router.push("/admin/create-page")} className='flex items-center gap-2 bg-[#0094DA] rounded-[12px] text-white h-[48px] px-6'>
                             <PlusIcon />
                             <span className='text-[16px] font-[500]'>Ajouter un page</span>
                         </button>
