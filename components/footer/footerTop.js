@@ -4,7 +4,7 @@ import Image from "next/image";
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsEnvelope, BsWhatsapp } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5"
 import { FiPhoneCall } from "react-icons/fi"
-import Link from "next/link"; 
+import Link from "next/link";
 
 const FooterTop = () => {
     return (
@@ -41,7 +41,7 @@ const FooterTop = () => {
                             <Link href="/">Accueil</Link>
                         </li>
                         <li className={"text-light__gray__color text-sm"}>
-                            <Link href="/">À propos de nous</Link>
+                            <Link href="/about-us">À propos de nous</Link>
                         </li>
                         <li className={"text-light__gray__color text-sm"}>
                             <Link href="/">Rozaliss</Link>
@@ -62,13 +62,13 @@ const FooterTop = () => {
                     <h2 className={"text-white font-bold opacity-0 pointer-events-none"}>Liens</h2>
                     <ul className={"flex flex-col gap-3 mt-4"}>
                         <li className={"text-light__gray__color text-sm"}>
-                            <Link href="/blog">Blog</Link>
+                            <Link href="/blogs">Blog</Link>
                         </li>
                         <li className={"text-light__gray__color text-sm"}>
                             <Link href="/contact-us">Contactez-nous</Link>
                         </li>
                         <li className={"text-light__gray__color text-sm"}>
-                            <Link href="/">Notre partenaires</Link>
+                            <Link href="/our-partners">Notre partenaires</Link>
                         </li>
                         <li className={"text-light__gray__color text-sm"}>
                             <Link href="/faq">FAQ</Link>
