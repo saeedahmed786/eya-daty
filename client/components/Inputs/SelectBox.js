@@ -31,12 +31,12 @@ const SelectBoxWidthSearch = ({ label, placeholder, data, handleUpdate, prevValu
                 <Select
                     className='w-full'
                     placeholder={placeholder}
-                    options={data?.filter(f => f?.name?.toLowerCase().includes(name?.toLowerCase())).map((item) => ({
-                        label: item?.name,
-                        value: item?._id,
+                    options={data?.filter(f => f?.fr?.toLowerCase().includes(name?.toLowerCase())).map((item) => ({
+                        label: item?.fr,
+                        value: item?.fr,
                     }))}
                     value={defaultValue}
-                    onChange={(value) => handleUpdate(value)}
+                    onChange={(value) => {handleUpdate(value); setDefaultValue(value)}}
                     suffixIcon={<Image src={DownArrow} alt="Down Arrow" />}
                     dropdownRender={(menu) => (
                         <div className='selectDropdown w-full p-4'>

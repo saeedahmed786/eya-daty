@@ -1,11 +1,9 @@
 import { Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../components/Layouts/Admin/AdminLayout'
-import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
 import AdminPagination from '../../components/Admin/Pagination'
 import RightIcon from '../../icons/righticon'
-import PlusIcon from '../../icons/plusIcon'
-import { useRouter } from 'next/router'
 import DeleteModal from '../../components/DeleteModal'
 import axios from 'axios'
 import { ErrorMessage, SuccessMessage } from '../../Messages/messages'
@@ -13,9 +11,7 @@ import { isAuthenticated } from '../../components/Auth/auth'
 import moment from 'moment'
 
 const Users = () => {
-    const router = useRouter();
     const [users, setUsers] = useState([]);
-    const [originalUsers, setOriginalUsers] = useState([]);
     const [userAuth, setUserAuth] = useState({});
     const [current, setCurrent] = useState(1);
     const [totalUsers, setTotalUsers] = useState();
@@ -27,8 +23,8 @@ const Users = () => {
             }
         }).then(res => {
             if (res.statusText === "OK") {
-                setUsers(res.data);
-                setOriginalUsers(res.data);
+                setUsers(res.data.users);
+                setTotalUsers(res.data.count);
             } else {
                 ErrorMessage(res.data.errorMessage);
             }
@@ -64,7 +60,7 @@ const Users = () => {
             title: '#',
             dataIndex: '_id',
             key: '_id',
-            sorter: (a, b) => a.id.length - b.id.length,
+            sorter: (a, b) => a._id.length - b._id.length,
             render: (_, { _id }) => (
                 <>
                     <div className='text-[#0094DA] text-[12px] font-[500]'>{_id}</div>
@@ -118,7 +114,7 @@ const Users = () => {
                 <>
                     <div className='flex items-center gap-4'>
                         <EyeOutlined />
-                        <EditOutlined onClick={() => router.push("/admin/update-article")} />
+                        {/* <EditOutlined onClick={() => router.push("/admin/update-article")} /> */}
                         <DeleteModal id={user._id} deleteFun={deleteHandler} deleteBtn={<DeleteOutlined style={{ verticalAlign: "middle" }} />} />
                     </div>
                 </>
@@ -138,7 +134,7 @@ const Users = () => {
                 <div className='mt-10 bg-white'>
                     <Table showSorterTooltip columns={columns} pagination={false} dataSource={users} />
                     <div className='adminPagination p-4 flex items-center justify-between my-12'>
-                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalUsers || 10} entrées</p>
+                        <p className='text-[#65737E] text-[12px]'>Affichage de {current * 10} sur {totalUsers} entrées</p>
                         <AdminPagination totalLength={totalUsers} handlePagination={(curr) => { setCurrent(curr); getAllUsers(userAuth, curr) }} />
                     </div>
                 </div>

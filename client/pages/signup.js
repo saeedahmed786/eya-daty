@@ -1,7 +1,7 @@
 import { Checkbox, Col, Divider, Form, Input, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RightIcon from '../icons/righticon'
 import google from "../assets/google.svg"
 import facebook from "../assets/facebook.svg"
@@ -11,13 +11,17 @@ import { EyeTwoTone, EyeInvisibleTwoTone } from "@ant-design/icons"
 import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
 import { useRouter } from 'next/router'
-import { ErrorMessage, SuccessMessage } from '../Messages/messages'
+import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage, SuccessMessage } from '../Messages/messages'
 import { Loading } from '../Loading/Loading'
 import axios from "axios"
+import GoogleLogin from 'react-google-login'
+import SocialLogin from '../components/SocialLogin'
 
 const Signup = () => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
     const router = useRouter();
 
     const onFinish = async (values) => {
@@ -25,13 +29,11 @@ const Signup = () => {
         setLoading(true);
         await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/signup`, { email, password }).then(res => {
             setLoading(false);
-            if (res.statusText === "OK") {
-                console.log(res.data);
-                SuccessMessage(res.data.successMessage);
-                router.push('/login');
+            if (res.status === 200) {
+                setSuccess(true)
             }
             else {
-                ErrorMessage(res.data.errorMessage);
+                setError(true)
             }
         })
     };
@@ -39,10 +41,21 @@ const Signup = () => {
     return (
         <MainLayout navbar>
             <div className='container px-5 mx-auto py-8'>
+                {
+                    success ?
+                        <div className='my-5'>
+                            <CustomSuccessMessage messages={`Compte créé avec succès!`} handleClose={() => setSuccess(false)} />
+                        </div>
+                        :
+                        error &&
+                        <div className='my-5'>
+                            <CustomErrorMessage messages="L'adresse e-mail est déjà utilisée" handleClose={() => setError(false)} />
+                        </div>
+                }
                 <div className='flex gap-2 items-center'>
                     <span>Accueil</span> <RightIcon /> <Link className='text-[#0094DA]' href="/signup">{"S'inscrire"}</Link>
                 </div>
-                <Row className='py-10' align="middle">
+                <Row className='py-10 block sm:flex' align="middle">
                     <Col md={12}>
                         <h1 className='text-[64px] leading-[72px] font-[700]'>Créer un<br /> compte</h1>
                         <div className='flex gap-2 py-6'>
@@ -136,18 +149,10 @@ const Signup = () => {
                         }
                         <Divider className='my-4' plain>Ou</Divider>
                         <div className='flex justify-center gap-4'>
-                            <button className='p-4 rounded-[50%] border border-[#C0C5CE] flex items-center justify-center'>
-                                <Image src={google} alt="Google" width="32px" />
-                            </button>
-                            <button className='p-4 rounded-[50%] border border-[#C0C5CE] flex items-center justify-center'>
-                                <Image src={facebook} alt="Google" width="32px" />
-                            </button>
-                            <button className='p-4 rounded-[50%] border border-[#C0C5CE] flex items-center justify-center'>
-                                <Image src={twitter} alt="Google" width="32px" />
-                            </button>
+                            <SocialLogin />
                         </div>
                     </Col>
-                    <Col md={12}>
+                    <Col md={12} className="hidden sm:block">
                         <Image src={illustration} className="w-full min-w-max h-full" alt="illustration" />
                     </Col>
                 </Row>

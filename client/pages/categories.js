@@ -5,6 +5,7 @@ import DownloadApp from '../components/Home/downloadApp'
 import MainLayout from '../components/Layouts/MainLayout'
 import { ErrorMessage } from '../Messages/messages';
 import axios from 'axios';
+import specialitiesArray from "../specialities.json"
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -39,7 +40,7 @@ const Categories = () => {
                 </div>
                 <div className='flex flex-wrap gap-6 mt-12'>
                     {
-                        categories && categories?.map(cat => {
+                        specialitiesArray && specialitiesArray?.map(cat => {
                             return (
                                 <div>
                                     <CategoryCard cat={cat} />

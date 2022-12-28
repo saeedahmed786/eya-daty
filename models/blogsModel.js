@@ -7,8 +7,7 @@ const blogSchema = new mongoonse.Schema({
         required: true
     },
     category: {
-        type: mongoonse.Schema.Types.ObjectId,
-        ref: 'Category',
+        type: String,
         required: true
     },
     title: {

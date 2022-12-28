@@ -46,13 +46,13 @@ export default function ClinicsSection({ clinics }) {
   return (
     <div>
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap justify-between  w-full mb-20">
+        <div className="container px-5 sm:py-24 mx-auto">
+          <div className="flex flex-wrap justify-between  w-full sm:mb-20">
             <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-              <p className='text-sitegreen font-medium'>Explorez tous les</p>
-              <h1 className="sm:text-3xl text-2xl lg:text-6xl lg:font-extrabold font-medium title-font mb-2 text-gray-900">Cliniques</h1>
+              <p className='text-sitegreen font-medium text-center sm:text-left'>Explorez tous les</p>
+              <h1 className="bigTitle text-center sm:text-left">Cliniques</h1>
             </div>
-            <div className='flex flex-row justify-center space-x-2   '>
+            <div className='w-full sm:w-[auto] flex justify-center sm:justify-center space-x-2'>
               <button onClick={() => slickRef.current?.slickPrev()}>
                 <div> <LeftIcon /> </div>
               </button>

@@ -12,8 +12,10 @@ import formatStringNumbers from '../FormatNumbers'
 import axios from 'axios'
 import { ErrorMessage } from '../../Messages/messages'
 import { isAuthenticated } from '../Auth/auth'
+import { useRouter } from 'next/router';
 
 const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
+    const router = useRouter()
     const [swiperObj, setSwiperObj] = useState();
     const [favourites, setFavourites] = useState([]);
 
@@ -95,18 +97,20 @@ const SearchCard = ({ gridCol, favourite, page, removeFavourite }) => {
                 </div>
                 <div className='inner mt-4' style={gridCol === 12 ? { paddingLeft: "0px", width: "100%" } : { paddingLeft: "15px", width: "70%" }}>
                     <div className='nameAndPic w-full flex justify-between pr-6'>
-                        <div className='flex items-center gap-2'>
-                            <div className='profileImg'>
-                                <img src={page?.user?.picture?.url} alt="Doctor" className="rounded-[50%] object-cover h-[32px] w-[36px]" />
-                            </div>
-                            <div className='w-full'>
-                                <div className='flex gap-2'>
-                                    <h6>{page?.user?.fullName}</h6>
-                                    <Image src={Check} alt="Checkmark" />
+                        <button onClick={() => router.push(`/doctor/${page._id}`)}>
+                            <div className='flex items-center gap-2'>
+                                <div className='profileImg'>
+                                    <img src={page?.picture?.url} alt="Doctor" className="rounded-[50%] object-cover h-[32px] w-[36px]" />
                                 </div>
-                                <p className='mt-2 text-left'>{page?.category?.name}</p>
+                                <div className='w-full'>
+                                    <div className='flex gap-2'>
+                                        <h6>{page?.firstName}{page?.lastName}</h6>
+                                        <Image src={Check} alt="Checkmark" />
+                                    </div>
+                                    <p className='mt-2 text-left'>{page?.specialisation}</p>
+                                </div>
                             </div>
-                        </div>
+                        </button>
                         {
                             favourite &&
                             <div>

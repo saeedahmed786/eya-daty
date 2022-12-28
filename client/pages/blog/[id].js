@@ -21,6 +21,7 @@ import { useRouter } from 'next/router'
 import { isAuthenticated } from '../../components/Auth/auth'
 import ReplyCommentCard from '../../components/Cards/ReplyCommentCard'
 import Link from 'next/link'
+import BlogsSearch from '../../components/Blogs/BlogsSearch'
 
 
 const Blog = () => {
@@ -76,11 +77,11 @@ const Blog = () => {
         return () => {
 
         }
-    }, [])
+    }, [blogId])
 
     const filteredArray = blogs.filter((obj, index) => {
         // Check if there are any other objects in the array with the same value for the specified key
-        return blogs.findIndex((otherObj) => otherObj?.category?.name === obj?.category?.name) === index;
+        return blogs.findIndex((otherObj) => otherObj?.category === obj?.category) === index;
     });
 
     return (
@@ -113,7 +114,9 @@ const Blog = () => {
                             </div>
                         </div>
                         <div className='mt-8'>
-                            <p dangerouslySetInnerHTML={{ __html: blog?.description }}></p>
+                            <div className='detailsText'>
+                                <div dangerouslySetInnerHTML={{ __html: blog?.description }}></div>
+                            </div>
                             {/* <p className='normalPara'>
                                 Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.  Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.
                             </p>
@@ -148,7 +151,7 @@ const Blog = () => {
                                 </div>
                                 <div>
                                     <strong>{blog?.user?.fullName}</strong>
-                                    <p className='normalPara my-2'>{blog?.category?.name}</p>
+                                    <p className='normalPara my-2'>{blog?.category}</p>
                                     <p className='normalPara mt-4'>{blog?.user?.bio}</p>
                                 </div>
                             </div>
@@ -176,24 +179,25 @@ const Blog = () => {
                         </div>
                     </Col>
                     <Col md={8}>
-                        <div className='searchBox relative'>
+                        {/* <div className='searchBox relative'>
                             <span>Chercher</span>
                             <br />
                             <input placeholder='Chercher...' />
                             <div className='absolute right-4 top-10'>
                                 <Image src={SearchIcon} alt="Search" />
                             </div>
-                        </div>
+                        </div> */}
+                        <BlogsSearch changeBlogId={(value) => setBlogId(value)} />
                         <h3>Nos articles les plus lus</h3>
                         <div className='my-8'>
                             {
-                                blogs && blogs?.length > 0 && blogs.slice(0, 6).map(blog => {
+                                blogs && blogs?.length > 0 && blogs.filter(b => b._id !== blogId).slice(0, 6).map(blog => {
                                     return (
-                                        <Link href={`/blog/${blog._id}`}>
+                                        <button onClick={() => { router.push(`/blog/${blog._id}`); setBlogId(blog._id) }}>
                                             <div className="mb-8">
                                                 <SmallBlogCard blog={blog} />
                                             </div>
-                                        </Link>
+                                        </button>
                                     )
                                 })
                             }
@@ -208,8 +212,8 @@ const Blog = () => {
                                 {
                                     filteredArray && filteredArray?.length > 0 && filteredArray.slice(0, 8).map(blog => {
                                         return (
-                                            <Link href={`/blog/${blog._id}`}>
-                                                <button>{blog?.category?.name}</button>
+                                            <Link href={`/blog/${blog._id}`} onClick={() => document.location.reload()}>
+                                                <button>{blog?.category}</button>
                                             </Link>
                                         )
                                     })

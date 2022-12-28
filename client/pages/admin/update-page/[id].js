@@ -18,6 +18,8 @@ import ServicesModal from '../../../components/Admin/ServicesModel'
 import { Loading } from '../../../Loading/Loading'
 import closeIcon from '../../../assets/closeIcon.svg'
 import { deleteFilesFun, uploadFilesFun } from '../../../components/UploadFile'
+import specialitiesArray from "../../../specialities.json"
+import typeArray from "../../../type_profile.json"
 
 
 const { Option } = Select;
@@ -68,7 +70,7 @@ const UpdatePage = () => {
             experience,
             clinicName,
             gpsData,
-            gender
+            gender,
         } = values;
 
         setLoading(true);
@@ -95,7 +97,9 @@ const UpdatePage = () => {
             schedule,
             category: categoryId,
             paidStatus,
-            status
+            status,
+            state: isAuthenticated().state,
+            city: isAuthenticated().city,
         }, {
             headers: {
                 "authorization": "Bearer " + userAuth?.token
@@ -299,9 +303,13 @@ const UpdatePage = () => {
                                         ]}
                                     >
                                         <Select placeholder="Type de page">
-                                            <Option value="Clinique médical">Clinique médical</Option>
-                                            <Option value="Laboratory">Laboratory</Option>
-                                            <Option value="Lab Anatomy">Lab Anatomy</Option>
+                                            {
+                                                typeArray?.length > 0 && typeArray.map(t => {
+                                                    return (
+                                                        <Option value={t.name_fr}>{t.name_fr}</Option>
+                                                    )
+                                                })
+                                            }
                                         </Select>
                                     </Form.Item>
                                     <Row gutter={[16, 16]}>
@@ -357,29 +365,29 @@ const UpdatePage = () => {
                                     </Form.Item>
                                     <Form.Item
                                         name="phoneTwo"
-                                        label="Numéro de Téléphone 02 ( Optionnel )"
+                                        label="Numéro de Téléphone 02 ( Optional )"
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please input your Numéro de Téléphone 02 ( Optionnel )!',
+                                                message: 'Please input your Numéro de Téléphone 02 ( Optional )!',
                                             }
                                         ]}
                                     >
-                                        <Input placeholder='Numéro de Téléphone 02 ( Optionnel )' prefix={"+213"} />
+                                        <Input placeholder='Numéro de Téléphone 02 ( Optional )' prefix={"+213"} />
                                     </Form.Item>
                                     <Form.Item
                                         name="fax"
-                                        label="Numéro de Téléphone Fixe ( Optionnel )"
+                                        label="Numéro de Téléphone Fixe ( Optional )"
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please input your Numéro de Téléphone Fixe ( Optionnel )!',
+                                                message: 'Please input your Numéro de Téléphone Fixe ( Optional )!',
                                             }
                                         ]}
                                     >
-                                        <Input placeholder='Numéro de Téléphone Fixe ( Optionnel )' prefix={"+213"} />
+                                        <Input placeholder='Numéro de Téléphone Fixe ( Optional )' prefix={"+213"} />
                                     </Form.Item>
                                     <Form.Item
                                         name="email"
@@ -401,24 +409,24 @@ const UpdatePage = () => {
                                     </Form.Item>
                                     <Form.Item
                                         name="facebookLink"
-                                        label="Lien de Facebook  ( Optionnel )"
+                                        label="Lien de Facebook  ( Optional )"
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please input your Lien de Facebook  ( Optionnel )!',
+                                                message: 'Please input your Lien de Facebook  ( Optional )!',
                                             },
                                         ]}
                                     >
-                                        <Input placeholder='Lien de Facebook  ( Optionnel )' />
+                                        <Input placeholder='Lien de Facebook  ( Optional )' />
                                     </Form.Item>
                                     <Form.Item
                                         name="bio"
-                                        label="Bio ( Optionnel )"
+                                        label="Bio ( Optional )"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please input Bio ( Optionnel )',
+                                                message: 'Please input Bio ( Optional )',
                                             },
                                         ]}
                                     >
@@ -435,8 +443,9 @@ const UpdatePage = () => {
                                         ]}
                                     >
                                         <Select placeholder="Spécialité">
-                                            <Option value="Medicine">Medicine</Option>
-                                            <Option value="Surgery">Surgery</Option>
+                                            {specialitiesArray.map((spec) => (
+                                                <Option key={spec.fr} value={spec.fr}>{spec.fr}</Option>
+                                            ))}
                                         </Select>
                                     </Form.Item>
                                     <Form.Item
@@ -493,12 +502,12 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="notes"
-                                        label="Les notes ( Optionnel )"
+                                        label="Les notes ( Optional )"
                                         hasFeedback
                                         rules={[
                                             {
                                                 required: false,
-                                                message: 'Please input your Les notes ( Optionnel )!',
+                                                message: 'Please input your Les notes ( Optional )!',
                                             }
                                         ]}
                                     >
@@ -522,7 +531,7 @@ const UpdatePage = () => {
                                     </div>
                                     <Form.Item
                                         name="clinicName"
-                                        label="Nom de la clinique ( Optionnel )"
+                                        label="Nom de la clinique ( Optional )"
                                         hasFeedback
                                     >
                                         <Input placeholder='Nom de la clinique' />

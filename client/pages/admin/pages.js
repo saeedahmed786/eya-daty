@@ -103,10 +103,10 @@ const Pages = () => {
             title: 'Catégorie',
             dataIndex: 'category',
             key: 'category',
-            sorter: (a, b) => a?.category?.name?.localeCompare(b?.category?.name),
+            sorter: (a, b) => a?.category?.localeCompare(b?.category),
             render: (_, { category }) => (
                 <>
-                    <div className='text-[#0094DA] text-[12px] font-[500]'>{category?.name}</div>
+                    <div className='text-[#0094DA] text-[12px] font-[500]'>{category}</div>
                 </>
             ),
         },

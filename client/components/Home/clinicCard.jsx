@@ -94,7 +94,7 @@ export default function ClinicCard({ clinic }) {
               </div>
             </div>
             <div className='flex justify-center'>
-              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="px-16 py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">Voir Plus <RightIcon /></button>
+              <button onClick={() => router.push(`/doctor/${clinic?._id}`)} type="button" className="sm:px-16 w-full text-center justify-center py-4 bg-white border-2 border-siteblue  text-siteblue font-medium text-sm leading-tight uppercase rounded-xl shadow-md hover:bg-siteblue hover:text-white hover:shadow-lg focus:bg-siteblue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-siteblue active:shadow-lg transition duration-150 ease-in-out flex items-center gap-3">Voir Plus <RightIcon /></button>
             </div>
           </div>
         </div>

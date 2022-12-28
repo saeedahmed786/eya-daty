@@ -7,8 +7,7 @@ const clinicSchema = new mongoose.Schema({
         required: true
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
+        type: String,
     },
     status: {
         type: String,
@@ -65,6 +64,11 @@ const clinicSchema = new mongoose.Schema({
     },
     city: {
         type: String,
+        default: "alru"
+    },
+    state: {
+        type: String,
+        default: "alru"
     },
     experience: {
         type: String,

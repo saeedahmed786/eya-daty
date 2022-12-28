@@ -114,10 +114,10 @@ const Admin = () => {
             title: 'Catégorie',
             dataIndex: 'category',
             key: 'category',
-            sorter: (a, b) => a?.category?.name?.localeCompare(b?.category?.name),
-            render: (_, { category }) => (
+            sorter: (a, b) => a?.specialisation?.localeCompare(b?.specialisation),
+            render: (_, { specialisation }) => (
                 <>
-                    <div className='text-[#0094DA] text-[12px] font-[500]'>{category?.name}</div>
+                    <div className='text-[#0094DA] text-[12px] font-[500]'>{specialisation}</div>
                 </>
             ),
         },

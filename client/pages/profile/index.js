@@ -9,6 +9,8 @@ import { isAuthenticated } from '../../components/Auth/auth';
 import { ErrorMessage, SuccessMessage } from '../../Messages/messages';
 import { Cookies } from 'react-cookie';
 import { Loading } from '../../Loading/Loading';
+import statesArray from "../../town_city/wilaya.json"
+import citiesArray from "../../town_city/communes.json"
 
 
 const { Option } = Select;
@@ -21,14 +23,6 @@ const Profile = () => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [userAuth, setUserAuth] = useState({});
-
-    // States and cities data
-    const states = ['Ile-de-France', 'Provence-Alpes-Côte d\'Azur', 'Nord-Pas-de-Calais'];
-    const cities = {
-        'Ile-de-France': ['Paris', 'Marne-la-Vallée', 'Versailles'],
-        'Provence-Alpes-Côte d\'Azur': ['Marseille', 'Nice', 'Cannes'],
-        'Nord-Pas-de-Calais': ['Lille', 'Roubaix', 'Tourcoing']
-    };
 
     // State to store selected state and city
     const [selectedState, setSelectedState] = useState('');
@@ -231,8 +225,8 @@ const Profile = () => {
                                     ]}
                                 >
                                     <Select onChange={handleStateSelection} placeholder="Wilaya">
-                                        {states.map((state) => (
-                                            <Option key={state} value={state}>{state}</Option>
+                                        {statesArray.map((state) => (
+                                            <Option key={state.nom.fr} value={state.nom.fr}>{state.nom.fr}</Option>
                                         ))}
                                     </Select>
                                 </Form.Item>
@@ -250,8 +244,8 @@ const Profile = () => {
                                         {
                                             selectedState &&
                                             (
-                                                cities[selectedState].map((city) => (
-                                                    <Option key={city} value={city}>{city}</Option>
+                                                citiesArray?.filter(c => c.wilaya_id === selectedState)?.map((city) => (
+                                                    <Option key={city.nom.fr} value={city.nom.fr}>{city.nom.fr}</Option>
                                                 ))
                                             )
                                         }

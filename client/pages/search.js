@@ -14,13 +14,29 @@ import LocationIcon from '../icons/locationicon'
 import RightIcon from '../icons/righticon'
 import { ErrorMessage } from '../Messages/messages'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { useRouter } from 'next/router'
+import citiesArray from "../town_city/communes.json"
+import SearchWithCheckBox from '../components/Inputs/SearchWithCheckBox'
+import Link from 'next/link'
 
 
-const Search = () => {
+const Search = ({ query }) => {
+    const router = useRouter();
     const [gridCol, setGridCol] = useState(24);
     const [current, setCurrent] = useState(1);
     const [userAuth, setUserAuth] = useState();
     const [clinics, setClinics] = useState([]);
+    const [results, setResults] = useState([]);
+    const [speciality, setSpeciality] = useState('');
+    const [clinicName, setClinicName] = useState('');
+    const [selectedState, setSelectedState] = useState('');
+    const [city, setCity] = useState('');
+    const [sortBy, setSortBy] = useState('');
+    const [service, setService] = useState('');
+    const [options, setOptions] = useState('');
+    const [avaialble, setAvailable] = useState('');
+    const [show, setShow] = useState(false);
+    const [gender, setGender] = useState("Male");
     const [totalClinics, setTotalClinics] = useState([]);
 
     const getClinics = async (curr) => {
@@ -35,10 +51,47 @@ const Search = () => {
         })
     };
 
+    const search = () => {
+        return axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clinics/search?specialisation=${speciality}&state=${selectedState}&city=${city}&available=${avaialble}&gender=${gender}&service=${service}&sortBy=${sortBy}&option=${options}&clinicName=${clinicName}`);
+    }
+
+    console.log(speciality, selectedState, city, avaialble, gender, service, sortBy, options)
+    const handleSearch = () => {
+        search().then((response) => {
+            setClinics(response.data);
+        });
+    }
+
+    const services = [
+        "Abdomino-pelviene",
+        "Acupuncture",
+        "Allergologie",
+        "Auriculothérapie",
+        "Cironcision",
+        "Consultation générale",
+        "Consultation à domicile",
+        "Cupping",
+        "Diabète",
+        "ECG",
+        "Echographie",
+        "Goitre",
+        "Holter tensionnel",
+        "Hypèrtension",
+        "Injections",
+    ]
+
 
     useEffect(() => {
         getClinics(current);
         setUserAuth(isAuthenticated());
+        // console.log(query)
+        // if (query) {
+        //     setSpeciality(query.speciality)
+        //     setSelectedState(query.state)
+        //     setCity(query.city)
+        //     setAvailable(query.avaialble)
+        //     setGender(query.gender)
+        // }
 
         return () => {
 
@@ -55,6 +108,7 @@ const Search = () => {
         }
         return originalElement;
     };
+
     return (
         <MainLayout navbar>
             <div className='SearchPage px-0 sm:px-24 py-8'>
@@ -65,26 +119,27 @@ const Search = () => {
                     <RightIcon />
                     <button className='text-[#0094DA]' href="/faq">Cardiologie</button>
                 </div>
-                <SearchInputs />
+                <SearchInputs handleUpdate={(val) => setClinicName(val)} />
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex flex-wrap gap-8'>
-                        <div className='w-[15vw]'>
-                            <SelectBox label="Commune" placeholder="Commune" />
+                        <div className='w-[15vw] overflow-x-auto'>
+                            <SearchWithCheckBox handleUpdate={(value) => setCity(value)} prevValue={city} data={["Tous", "Médea", "Ouzera", "Ouled Maaref", "Ain Boucif", "Aissaouia", "Ouled Deide"]} label="Commune" placeholder="Commune" />
                         </div>
                         <div className='w-[15vw]'>
-                            <SelectBox label="Services" placeholder="Services" />
+                            <SearchWithCheckBox handleUpdate={(value) => setService(value)} data={services} label="Services" placeholder="Services" />
                         </div>
                         <div className='w-[15vw]'>
-                            <SelectBox label="Trier par" placeholder="Trier par" />
+                            <SearchWithCheckBox handleUpdate={(value) => setSortBy(value)} data={["Plus de recommandation", "Le plus regardé", "La plus proche"]} label="Trier par" placeholder="Trier par" />
                         </div>
                         <div className='w-[15vw]'>
-                            <SelectBox label="Le genre" placeholder="Le genre" />
+                            <SearchWithCheckBox handleUpdate={(value) => setGender(value)} prevValue={gender} data={["Male", "Female"]} label="Le genre" placeholder="Le genre" />
                         </div>
                         <div className='w-[15vw]'>
-                            <SelectBox label="Options" placeholder="Options" />
+                            <SearchWithCheckBox handleUpdate={(value) => setOptions(value)} data={["GPS", "Email", "Facebook", "Instagram", "+5 Recommandations", "Ouvert"]} label="Options" placeholder="Options" />
                         </div>
                     </div>
                 </div>
+                <button onClick={handleSearch}>Search</button>
                 <Row gutter={[23, 23]}>
                     <Col md={14}>
                         <h2 className='subTitle my-12'>Recherche de <span className='text-[#0094DA]'>{`" Cardiologie "`}</span></h2>
@@ -154,6 +209,14 @@ const Search = () => {
             </div>
         </MainLayout>
     )
+}
+
+export async function getServerSideProps(context) {
+    return {
+        props: {
+            query: context.query,
+        },
+    };
 }
 
 export default Search

@@ -47,6 +47,60 @@ exports.getClinicById = async (req, res) => {
     }
 }
 
+exports.searchClinics = async (req, res) => {
+    const state = req.query.state;
+    const clinicName = req.query.clinicName;
+    const city = req.query.city;
+    const gender = req.query.gender;
+    const services = req.query.service;
+    const sortBy = req.query.sortBy;
+    const specialisation = req.query.specialisation;
+
+    console.log(clinicName)
+
+    // Build the query object
+    const query = { $and: [] };
+    if (state) {
+        query.$and.push({ state: state });
+    }
+    if (clinicName) {
+        query.$and.push({ clinicName: { $regex: clinicName, $options: "i" } });
+    }
+    if (city) {
+        query.$and.push({ city: city });
+    }
+    if (specialisation) {
+        query.$and.push({ specialisation: specialisation });
+    }
+    if (gender) {
+        query.$and.push({ gender: gender });
+    }
+    if (services) {
+        query.$and.push({ 'services': services });
+    }
+
+    // const query = {
+    //     $and: [
+    //         { specialisation: { $regex: specialisation, $options: "i" } },
+    //         { state: { $regex: state, $options: "i" } },
+    //         { city: { $regex: city, $options: "i" } },
+    //         { gender: { $regex: gender, $options: "i" } },
+    //         { specialisation: { $regex: specialisation, $options: "i" } },
+    //         { services: { $elemMatch: { services } } },
+    //     ]
+    // };
+
+    Clinic.find(query)
+        // .sort({ sortBy: 1 })
+        .exec((error, results) => {
+            if (error) {
+                res.status(500).send(error);
+            } else {
+                res.json(results);
+            }
+        });
+}
+
 exports.getAllNotifications = async (req, res) => {
     const notification = await Notification.find().populate("user");
     if (notification) {
@@ -110,6 +164,8 @@ exports.addClinic = async (req, res) => {
             bio: req.body.bio,
             picture: req.body.profileFile,
             gender: req.body.gender,
+            state: req.body.state,
+            city: req.body.city,
             pictures: req.body.filesList,
         });
 
@@ -163,6 +219,8 @@ exports.adminAddClinic = async (req, res) => {
         status: req.body.status,
         paidStatus: req.body.paidStatus,
         pictures: req.body.filesList,
+        state: req.body.state,
+        city: req.body.city,
     });
 
     const saveClinic = await clinic.save();

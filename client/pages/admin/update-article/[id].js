@@ -12,6 +12,7 @@ import { isAuthenticated } from '../../../components/Auth/auth'
 import { ErrorMessage, SuccessMessage } from '../../../Messages/messages'
 import axios from 'axios'
 import { Loading } from '../../../Loading/Loading'
+import specialitiesArray from "../../../specialities.json"
 const ReactQuill = dynamic(import('react-quill'), { ssr: false });
 const QuillToolbar = dynamic(import('../../../components/QuillEditor'), { ssr: false });
 
@@ -28,25 +29,29 @@ const UpdateArticle = () => {
 
     console.log(categoryId)
 
+
     const Formats = [
-        "header",
-        // "font",
-        // "size",
-        "bold",
-        "italic",
-        "underline",
-        "align",
-        "strike",
-        "script",
-        "blockquote",
-        "background",
-        "list",
-        "bullet",
-        "indent",
-        "link",
-        "image",
-        "color",
-        "code-block"
+        'header',
+        'font',
+        'size',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'indent',
+        'link',
+        'image',
+        'color',
+        'size',
+        'video',
+        'align',
+        'background',
+        'direction',
+        'code-block',
+        'code',
     ];
 
     const getAllCategories = async () => {
@@ -150,9 +155,9 @@ const UpdateArticle = () => {
                                     <Input value={title} placeholder='Titre' onChange={(e) => setTitle(e.target.value)} />
                                 </div>
                                 {
-                                    blog?.category?._id &&
+                                    blog?.category &&
                                     <div className='mb-3'>
-                                        <SelectBoxWidthSearch prevValue={blog?.category?._id} label="Category" data={categories} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                                        <SelectBoxWidthSearch prevValue={blog.category} label="Category" data={specialitiesArray} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                                     </div>
                                 }
                                 <div className='mb-3'>

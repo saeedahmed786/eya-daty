@@ -11,6 +11,7 @@ import { uploadFilesFun } from '../../components/UploadFile'
 import { isAuthenticated } from '../../components/Auth/auth'
 import { ErrorMessage, SuccessMessage } from '../../Messages/messages'
 import axios from 'axios'
+import specialitiesArray from "../../specialities.json"
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
 const QuillToolbar = dynamic(import('../../components/QuillEditor'), { ssr: false })
 
@@ -124,7 +125,7 @@ const CreateBlog = () => {
                             <Input placeholder='Titre' onChange={(e) => setTitle(e.target.value)} />
                         </div>
                         <div className='mb-3'>
-                            <SelectBoxWidthSearch prevValue={categories[0]?._id} data={categories} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
+                            <SelectBoxWidthSearch prevValue={specialitiesArray[0]?.fr} data={specialitiesArray} handleUpdate={(value) => setCategoryId(value)} placeholder="Catégorie" />
                         </div>
                         <div className='mb-3'>
                             <label>Contenue:</label> <br />

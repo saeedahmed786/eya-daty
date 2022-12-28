@@ -71,18 +71,18 @@ const AboutUsPage = () => {
                 </div>
                 <AboutUs />
                 <section className="text-gray-600 body-font">
-                    <div className="container mx-auto flex px-0 py-24 md:flex-row flex-col items-center justify-center ">
-                        <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                            <div className='max-w-[80%]'>
+                    <div className="container mx-auto flex px-0 sm:py-24 md:flex-row flex-col items-center justify-center ">
+                        <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start md:text-left sm:mb-16 md:mb-0 items-center text-center">
+                            <div className='sm:max-w-[80%]'>
                                 <p className="text-sm  text-sitegreen font-bold mb-5 w-full">Notre services</p>
-                                <h1 className="text-[46px] sm:text-[56px] leading-[64px] mb-4 font-extrabold text-gray-900">Nous fournissons les meilleurs service?</h1>
+                                <h1 className="bigTitle">Nous fournissons les meilleurs service?</h1>
                                 <p className="mb-8 leading-relaxed">
                                     Lörem ipsum prektigt beren makroligt, till desena. Lasock heterok. Nir nist så keltisk tiger usat fast bior. Rebel nedyn prertad krod semigon. Rest reska inte eubel sasade. Du kan vara drabbad.
                                     Ananade krogogt fulparkerare. Speskade syll men polylunat biortad. Hell dede. Kasa keredybär.
                                 </p>
                             </div>
                         </div>
-                        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        <div className="hidden sm:block lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
                             <Image src={aboutimg} alt="Image of doctor" width={420} height={428.03} />
                         </div>
                     </div>
@@ -93,10 +93,10 @@ const AboutUsPage = () => {
                             <div className='max-w-[100%]'>
                                 <p className="text-sm  text-sitegreen font-bold mb-2 w-full">Témoignages</p>
                                 <h1 className="text-[46px] sm:text-[56px] mb-12 leading-[64px] font-extrabold text-gray-900">{"Qu'ont-ils"} dit de <br /> nous ?</h1>
-                                <div className='mb-24 flex justify-center'>
-                                    <Slider {...settings} className="max-w-[50%]">
+                                <div className='mb-24 flex justify-center p-5 sm:p-0'>
+                                    <Slider {...settings} className="w-[100%] sm:max-w-[50%]">
                                         <div className='px-4'>
-                                            <div className='flex items-center gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
+                                            <div className='flex items-center flex-wrap gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
                                                 <div className='qoutes-white'>
                                                     <Image src={qoutesWhite} style={{ width: "100px" }} alt="White Qoutes Sign" />
                                                 </div>
@@ -124,7 +124,7 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div className='px-4'>
-                                            <div className='flex items-center gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
+                                            <div className='flex flex-wrap items-center gap-4 bg-[#93C01F] rounded-[24px] py-6 px-6'>
                                                 <div className='qoutes-white'>
                                                     <Image src={qoutesWhite} style={{ width: "100px" }} alt="White Qoutes Sign" />
                                                 </div>

@@ -50,8 +50,21 @@ export default function BlogList({ blogs }) {
         <div>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-wrap justify-between w-full mb-20">
-                        <div className="mb-6 lg:mb-0">
+                    <div className="flex flex-wrap justify-between w-full sm:mb-20">
+                        <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
+                            <p className='text-sitegreen font-medium text-center sm:text-left'>Notre blog</p>
+                            <h1 className="bigTitle text-center sm:text-left">Voir notre dernier blog</h1>
+                        </div>
+                        <div className='w-full sm:w-[auto] flex justify-center sm:justify-center space-x-2 my-6 sm:my-0'>
+                            <button onClick={() => slickRef.current?.slickPrev()}>
+                                <div> <LeftIcon /> </div>
+                            </button>
+                            <button onClick={() => slickRef.current?.slickNext()} >
+                                <div style={{ transform: "rotate(180deg)" }}> <LeftIcon /> </div>
+                            </button>
+                        </div>
+                    </div>
+                    {/* <div className="mb-6 lg:mb-0">
                             <p className='text-sitegreen font-medium'>Notre blog</p>
                             <h1 className="sm:text-3xl text-2xl lg:text-6xl lg:font-extrabold font-medium title-font mb-2 text-gray-900">Voir notre dernier blog</h1>
                         </div>
@@ -62,8 +75,8 @@ export default function BlogList({ blogs }) {
                             <button onClick={() => slickRef.current?.slickNext()} >
                                 <div style={{ transform: "rotate(180deg)" }}> <LeftIcon /> </div>
                             </button>
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
                     <div className={""}>
                         <Slider {...settings} ref={slickRef}>
                             {
@@ -74,7 +87,7 @@ export default function BlogList({ blogs }) {
                                                 <div className={'h-[480px] px-4 py-5'} style={{ background: 'rgba(0, 0, 0, 0.5)', borderRadius: '16px' }}>
                                                     <div className="flex flex-col justify-between h-full">
                                                         <div className={"bg-white text-dark__color text-sm  w-fit px-5 h-[30px] rounded-[8px] flex items-center"}>
-                                                            {blog?.category?.name}
+                                                            {blog?.category}
                                                         </div>
                                                         <div className={""}>
                                                             <p className={"text-sm text-white flex items-center gap-1 pb-2"}>

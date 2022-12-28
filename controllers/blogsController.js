@@ -2,7 +2,7 @@ const Blog = require('../models/blogsModel');
 
 
 exports.getAllBlogs = async (req, res) => {
-    const blogs = await Blog.find().limit(20).populate("user category").sort({ createdAt: -1 });
+    const blogs = await Blog.find().limit(20).populate("user").sort({ createdAt: -1 });
     if (blogs) {
         res.status(200).json(blogs);
     }
@@ -14,7 +14,7 @@ exports.getAllBlogs = async (req, res) => {
 exports.getLimitedBlogs = async (req, res) => {
     const PAGE_SIZE = 10;
     const page = req.params.page || "0";
-    const blogs = await Blog.find().limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user category").sort({ createdAt: -1 });
+    const blogs = await Blog.find().limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user").sort({ createdAt: -1 });
     const count = await Blog.countDocuments({});
     if (blogs) {
         res.status(200).json({ blogs, count });
@@ -27,7 +27,7 @@ exports.getLimitedBlogs = async (req, res) => {
 exports.getLimitedBlogsByCategory = async (req, res) => {
     const PAGE_SIZE = 10;
     const page = req.params.page || "0";
-    const blogs = await Blog.find({ category: req.body.category }).limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user category").sort({ createdAt: -1 });
+    const blogs = await Blog.find({ category: req.body.category }).limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user").sort({ createdAt: -1 });
     const count = await Blog.countDocuments({ category: req.body.category });
     if (blogs) {
         res.status(200).json({ blogs, count });
@@ -36,9 +36,21 @@ exports.getLimitedBlogsByCategory = async (req, res) => {
         res.status(404).json({ errorMessage: 'No blog found!' });
     }
 }
+exports.searchBlogs = async (req, res) => {
+    const searchTerm = req.query.term;
+    Blog.find({ title: { $regex: searchTerm, $options: "i" } })
+        .sort({ price: 1 })
+        .exec((error, results) => {
+            if (error) {
+                res.status(500).send(error);
+            } else {
+                res.json(results);
+            }
+        });
+}
 
 exports.getBlogByUserId = async (req, res) => {
-    const blogs = await Blog.find({ user: req.params.id }).populate("user category").sort({ createdAt: -1 });
+    const blogs = await Blog.find({ user: req.params.id }).populate("user").sort({ createdAt: -1 });
     if (blogs) {
         res.status(200).json(blogs);
     }
@@ -48,7 +60,7 @@ exports.getBlogByUserId = async (req, res) => {
 }
 
 exports.getBlogById = async (req, res) => {
-    const blog = await Blog.findOne({ _id: req.params.id }).populate("user category");
+    const blog = await Blog.findOne({ _id: req.params.id }).populate("user");
     if (blog) {
         res.status(200).json(blog);
     }

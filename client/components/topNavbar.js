@@ -4,20 +4,22 @@ import france from "/assets/france.png"
 import Image from "next/image";
 import { Select } from 'antd';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const { Option } = Select;
 
 export default function TopNavbar() {
   const [lang, setLang] = useState("fr");
   const [show, setShow] = useState(false);
+  const router = useRouter()
 
   return (
     <header className="text-gray-600 py-4 px-5 lg:px-20 bg-sitegreen body-font">
       <div className="container mx-auto flex justify-between flex-col  md:flex-row lg:items-center">
         <div>
-          <Link href="/" className="flex justify-start title-font font-medium lg:items-center text-white mb-4 md:mb-0">
+          <button onClick={() => router.push("/")} className="flex justify-start title-font text-[14px] font-[500] lg:items-center text-white mb-4 md:mb-0">
             Rozalis
-          </Link>
+          </button>
         </div>
         <div className=' lg:w-1/4 w-full flex justify-between '>
           <div className='bg-white rounded-[8px] px-4 p-2 flex items-center justify-center'>
@@ -29,9 +31,9 @@ export default function TopNavbar() {
             <Link href="/blogs">Blog</Link>
           </div>
           <div className='relative'>
-            <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-2 flex items-center gap-2'>
+            <div onClick={() => setShow(!show)} className='rounded-[32px] cursor-pointer relative border border-white p-0 flex items-center gap-1'>
               <Image className={"cursor-pointer"} width="23px" src={france} alt={"France"} />
-              <span className={"text-sm text-white"}>{lang}</span>
+              <span className={"text-sm text-white p-1"}>{lang}</span>
             </div>
             {
               show &&

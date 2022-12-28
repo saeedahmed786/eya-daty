@@ -1,17 +1,18 @@
 import { AppstoreOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Col, Pagination, Row } from 'antd'
 import axios from 'axios'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import SearchIcon from "../assets/search.svg"
 import BlogCategory from '../components/Blogs/BlogCategory'
+import BlogsSearch from '../components/Blogs/BlogsSearch'
 import BlogCard from '../components/Cards/BlogCard'
 import DownloadApp from '../components/Home/downloadApp'
 import Subscribe from '../components/Home/subscribe'
 import MainLayout from '../components/Layouts/MainLayout'
 import RightIcon from '../icons/righticon'
 import { ErrorMessage } from '../Messages/messages'
+import specialitiesArray from "../specialities.json"
+
 
 const Blogs = () => {
     const router = useRouter();
@@ -82,14 +83,7 @@ const Blogs = () => {
                 <h1 className='bigTitle text-center py-3'>Voir notre  < br />dernier blog</h1>
                 <div className='flex flex-wrap justify-between items-center gap-8 mt-8'>
                     <div className='flex gap-8'>
-                        <div className='searchBox relative'>
-                            <label>Chercher</label>
-                            <br />
-                            <input placeholder='Chercher...' />
-                            <div className='absolute right-4 top-10'>
-                                <Image src={SearchIcon} alt="Search" />
-                            </div>
-                        </div>
+                        <BlogsSearch changeBlogId={(val) => console.log(val)} />
                         <div className='searchBox relative'>
                             <label>Trier par</label>
                             <br />
@@ -120,12 +114,12 @@ const Blogs = () => {
                         <h1 className='bigTitle text-center py-3'>Catégories</h1>
                         <div className='mt-8'>
                             {
-                                categories && categories?.length > 0 && categories.map(cat => {
+                                specialitiesArray && specialitiesArray?.length > 0 && specialitiesArray.map(cat => {
                                     return (
-                                        <button className='catCard my-4' onClick={() => getLimitedBlogsByCategory(0, cat._id)}>
-                                            <div className='name'>{cat?.name}</div>
+                                        <button className='catCard text-left my-4' onClick={() => getLimitedBlogsByCategory(0, cat.fr)}>
+                                            <div className='name'>{cat?.fr}</div>
                                             <div className='count'>
-                                                <BlogCategory category={cat._id} />
+                                                <BlogCategory category={cat.fr} />
                                             </div>
                                         </button>
                                     )

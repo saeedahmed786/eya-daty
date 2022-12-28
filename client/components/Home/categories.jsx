@@ -40,8 +40,8 @@ export default function Categories({ categories }) {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 2
         }
       }
     ]
@@ -50,12 +50,12 @@ export default function Categories({ categories }) {
   return (
     <section className="text-gray-600 body-font categoriesComp bg-[url('../assets/Lines-alt.png')] bg-cover bg-no-repeat  ">
       <div className="container py-16 mx-auto ">
-        <div className="flex flex-wrap justify-between px-0 w-full mb-20">
-          <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <p className='text-sitegreen font-medium pl-1'>Explorez tous les</p>
-            <h1 className="sm:text-3xl text-2xl lg:text-6xl lg:font-extrabold font-medium title-font mb-2 text-gray-900">Catégories</h1>
+        <div className="flex flex-wrap justify-center sm:justify-between px-0 w-full mb-20">
+          <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
+            <p className='text-sitegreen text-center sm:text-left font-medium pl-1'>Explorez tous les</p>
+            <h1 className="bigTitle text-center sm:text-left">Catégories</h1>
           </div>
-          <div className='flex flex-row justify-center space-x-1'>
+          <div className='flex flex-row justify-center gap-2 space-x-1'>
             <button onClick={() => slickRef.current?.slickPrev()}>
               <div> <LeftIcon /> </div>
             </button>

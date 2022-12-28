@@ -1,11 +1,12 @@
 const express = require('express');
-const { getAllBlogs, getBlogById, getBlogByUserId, addBlog, updateBlog, deleteBlog, getLimitedBlogs, getLimitedBlogsByCategory } = require('../controllers/blogsController');
+const { getAllBlogs, getBlogById, getBlogByUserId, addBlog, updateBlog, deleteBlog, getLimitedBlogs, getLimitedBlogsByCategory, searchBlogs } = require('../controllers/blogsController');
 const { AuthenticatorJWT } = require('../middlewares/authenticator');
 
 const router = express.Router();
 
 router.get('/', getAllBlogs);
 router.get('/limited/:page', getLimitedBlogs);
+router.get('/search', searchBlogs);
 router.post('/category/limited/:page', getLimitedBlogsByCategory);
 router.get('/get/:id', getBlogById);
 router.get('/user/:id', AuthenticatorJWT, getBlogByUserId);

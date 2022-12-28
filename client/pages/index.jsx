@@ -3,11 +3,12 @@ import { Suspense, useEffect, useState } from 'react'
 import PageLoader from "../components/common/loader/page-loader";
 import MainLayout from '../components/Layouts/MainLayout';
 import axios from "axios"
-import { ErrorMessage } from '../Messages/messages';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { isAuthenticated } from '../components/Auth/auth';
 import LocationComp from '../components/Location';
+import specialitiesArray from "../specialities.json"
+import { CustomErrorMessage, CustomSuccessMessage, ErrorMessage } from '../Messages/messages';
 
 const HeroPage = dynamic(() => import('../components/Home/hero'), {
     suspense: true,
@@ -96,15 +97,17 @@ export default function Home() {
         <MainLayout navbar>
             <Suspense fallback={<PageLoader />}>
                 <div className='homepage'>
+                    {/* <CustomSuccessMessage />
+                    <CustomErrorMessage /> */}
                     <LocationComp />
-                    <HeroPage /> 
+                    <HeroPage />
                     <SearchForm />
                     <AboutUs />
-                    <Categories categories={categories} />
+                    <Categories categories={specialitiesArray} />
                     <DownloadApp />
-                    <ClinicsSection clinics={clinics.filter(c => c.type === "Clinique médical")} />
+                    <ClinicsSection clinics={clinics.filter(c => c.type === "Clinique")} />
                     <LabSection clinics={clinics.filter(c => c.type === "Laboratory")} />
-                    <Doctor clinics={clinics.filter(c => c.type === "Clinique médical")} />
+                    <Doctor clinics={clinics.filter(c => c.type === "Clinique")} />
                     <BlogList blogs={blogs} />
                     <Subscribe />
                 </div>

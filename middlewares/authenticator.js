@@ -12,7 +12,7 @@ AuthenticatorJWT = (req, res, next) => {
         req.user = decoded.user;
         next();
     } catch (error) {
-        res.status(400).json({ errorMessage: 'You cannot access this route due to invalid token.' });
+        res.json({ errorMessage: 'You cannot access this route due to invalid token.' });
     }
 }
 

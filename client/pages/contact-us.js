@@ -101,7 +101,7 @@ const ContactUs = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col md={12}>
+                    <Col md={12} className="hidden sm:block">
                         <Image src={illustration} alt="illustration" />
                     </Col>
                 </Row >
