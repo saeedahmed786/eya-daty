@@ -10,7 +10,7 @@ router.get('/limited/:page', AuthenticatorJWT, getLimitedUsers);
 router.post('/signup', upload.single('file'), signUp);
 router.post('/login', login);
 router.get('/get/:id', AuthenticatorJWT, getUserById);
-router.post('/update-profile', upload.single("file"), AuthenticatorJWT, updateUser);
+router.post('/update-profile', AuthenticatorJWT, updateUser);
 router.post('/reset-password', resetPasswordLink);
 router.post('/update-password', updatePassword);
 

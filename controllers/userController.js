@@ -107,13 +107,6 @@ exports.updateUser = async (req, res) => {
     const findUser = await User.findOne({ _id: req.user._id });
     if (findUser) {
         if (req.file) {
-            const imgUrl = findUser?.picture?.id;
-            imgUrl && await cloudinaryConfig.uploader.destroy(imgUrl);
-            const { path } = req.file;
-            const uploading = await cloudinary.uploads(path, 'Eyadaty/User');
-            imageUpload = uploading;
-            await fs.unlinkSync(path);
-
             findUser.fullName = req.body.name;
             findUser.email = req.body.email;
             findUser.phone = req.body.phone;
@@ -121,7 +114,7 @@ exports.updateUser = async (req, res) => {
             findUser.state = req.body.state;
             findUser.dob = req.body.dob;
             findUser.gender = req.body.gender;
-            findUser.picture = imageUpload;
+            findUser.picture = req.body.profileFile;
 
             const saveUser = await findUser.save();
             if (saveUser) {
