@@ -34,7 +34,7 @@ app.use('/api/blogs', blogsRoutes);
 
 /******************************************MongoDb Connection********************************************/
 
-mongoose.connect(config.mongoURI, {
+mongoose.connect(config.mongoURI, { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

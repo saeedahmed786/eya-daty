@@ -1,10 +1,11 @@
 const express = require('express');
 const { AuthenticatorJWT, isAdmin } = require('../middlewares/authenticator');
-const { addClinic, getAllClinics, getClinicById, getClinicByUserId, updateViews, updateFavourites, addRecommendation, addNotRecommendations, removeNotRecommendations, removeRecommendation, updateClinic, deleteClinic, adminAddClinic, getAllNotifications, getLimitedClinics, getAllFavouritesByPageId, deleteFavourite, addFavourite, getAllFavouritesByUserId, searchClinics, markNotificationsAsRead } = require('../controllers/clinicController');
+const { addClinic, getAllClinics, getClinicById, getClinicByUserId, updateViews, updateFavourites, addRecommendation, addNotRecommendations, removeNotRecommendations, removeRecommendation, updateClinic, deleteClinic, adminAddClinic, getAllNotifications, getLimitedClinics, getAllFavouritesByPageId, deleteFavourite, addFavourite, getAllFavouritesByUserId, searchClinics, markNotificationsAsRead, adminSearch } = require('../controllers/clinicController');
 
 const router = express.Router();
 
 router.get('/search', searchClinics);
+router.get('/admin/finding', adminSearch);
 
 router.post('/add', AuthenticatorJWT, addClinic);
 router.post('/admin/add', AuthenticatorJWT, isAdmin, adminAddClinic);

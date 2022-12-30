@@ -60,9 +60,9 @@ exports.searchClinics = async (req, res) => {
 
     // Build the query object
     const query = { $and: [] };
-    if (state) {
-        query.$and.push({ state: state });
-    }
+    // if (state) {
+    //     query.$and.push({ state: state });
+    // }
     if (clinicName) {
         query.$and.push({ clinicName: { $regex: clinicName, $options: "i" } });
     }
@@ -79,22 +79,38 @@ exports.searchClinics = async (req, res) => {
         query.$and.push({ 'services': services });
     }
 
-    // const query = {
-    //     $and: [
-    //         { specialisation: { $regex: specialisation, $options: "i" } },
-    //         { state: { $regex: state, $options: "i" } },
-    //         { city: { $regex: city, $options: "i" } },
-    //         { gender: { $regex: gender, $options: "i" } },
-    //         { specialisation: { $regex: specialisation, $options: "i" } },
-    //         { services: { $elemMatch: { services } } },
-    //     ]
-    // };
-
     Clinic.find(query)
         // .sort({ sortBy: 1 })
         .exec((error, results) => {
             if (error) {
                 res.status(500).send(error);
+            } else {
+                res.json(results);
+            }
+        });
+}
+
+exports.adminSearch = async (req, res) => {
+    const status = req.query.status;
+    const paidStatus = req.query.paidStatus;
+    const specialisation = req.query.specialisation;
+
+    // Build the query object
+    const query = { $and: [] };
+    if (status) {
+        query.$and.push({ status: status });
+    }
+    if (specialisation) {
+        query.$and.push({ specialisation: specialisation });
+    }
+    if (paidStatus) {
+        query.$and.push({ paidStatus: paidStatus });
+    }
+    Clinic.find(query)
+        // .sort({ sortBy: 1 })
+        .exec((error, results) => {
+            if (error) {
+                res.send([]);
             } else {
                 res.json(results);
             }
