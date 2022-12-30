@@ -2,15 +2,14 @@ const User = require('../models/userModel');
 var bcrypt = require('bcryptjs');
 const config = require('../config/keys');
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
 const Template = require('../email-template');
 const crypto = require('crypto');
 const sendEmail = require('../nodemailer');
-const cloudinary = require('../middlewares/cloudinary');
-const cloudinaryConfig = require('../middlewares/cloudinaryConfig');
 const fetch = require('node-fetch');
+const nodemailer = require('nodemailer');
 const { OAuth2Client } = require('google-auth-library');
 const googleClient = new OAuth2Client(config.googleClient);
+
 
 
 
@@ -336,4 +335,27 @@ exports.facebookLogin = (req, res) => {
                 });
             })
     );
+}
+
+
+
+
+
+
+
+/********** Contact Us ********/
+
+exports.contactUs = async (req, res) => {
+    await sendEmail(
+        config.EMAIL,
+        "Message from Eyadaty User",
+        `<div>
+        <h4>Email: ${req.body.email}</h4>
+        <h4>Name: ${req.body.fullName}</h4>
+        <h4>Message: </h4>
+        <p>${req.body.message}</p>
+    </div>`
+    );
+
+    res.status(200).json({ successMessage: "Email sent!" });
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const upload = require('../middlewares/multer');
-const { signUp, login, resetPasswordLink, updatePassword, updateUser, getUserById, getAllUsers, getLimitedUsers, googleLogin, facebookLogin } = require('../controllers/userController');
+const { signUp, login, resetPasswordLink, updatePassword, updateUser, getUserById, getAllUsers, getLimitedUsers, googleLogin, facebookLogin, contactUs } = require('../controllers/userController');
 const { AuthenticatorJWT } = require('../middlewares/authenticator');
 
 const router = express.Router();
@@ -16,5 +16,7 @@ router.post('/update-password', updatePassword);
 
 router.post('/google-login', googleLogin);
 router.post('/facebook-login', facebookLogin);
+
+router.post('/contactUs', contactUs);
 
 module.exports = router;

@@ -48,7 +48,7 @@ exports.getClinicById = async (req, res) => {
 }
 
 exports.searchClinics = async (req, res) => {
-    const state = req.query.state;
+    const options = req.query.options;
     const clinicName = req.query.clinicName;
     const city = req.query.city;
     const gender = req.query.gender;
@@ -56,7 +56,7 @@ exports.searchClinics = async (req, res) => {
     const sortBy = req.query.sortBy;
     const specialisation = req.query.specialisation;
 
-    console.log(clinicName)
+    console.log(options)
 
     // Build the query object
     const query = { $and: [] };
@@ -78,10 +78,27 @@ exports.searchClinics = async (req, res) => {
     if (services) {
         query.$and.push({ 'services': services });
     }
+    if (options && options === "Facebook") {
+        query.$and.push({ facebookLink: { $ne: undefined }, facebookLink: { $ne: "" } });
+    }
+    if (options && options === "Email") {
+        query.$and.push({ email: { $ne: undefined }, email: { $ne: "" } });
+    }
+    if (options && options === "+5 Recommandations") {
+        query.$and.push({ recommendations: { $ne: undefined }, recommendations: { $ne: "" } });
+    }
 
     Clinic.find(query)
-        // .sort({ sortBy: 1 })
+        .sort(
+            sortBy === "recommendations" ?
+                { "recommendations": -1 }
+                :
+                sortBy === "notrecommendations" &&
+                { "notrecommendations": -1 }
+        )
+        .populate("user")
         .exec((error, results) => {
+            // console.log(error, results)
             if (error) {
                 res.status(500).send(error);
             } else {
@@ -94,9 +111,14 @@ exports.adminSearch = async (req, res) => {
     const status = req.query.status;
     const paidStatus = req.query.paidStatus;
     const specialisation = req.query.specialisation;
+    const clinicName = req.query.clinicName;
 
     // Build the query object
     const query = { $and: [] };
+
+    if (clinicName) {
+        query.$and.push({ clinicName: { $regex: clinicName, $options: "i" } });
+    }
     if (status) {
         query.$and.push({ status: status });
     }
@@ -108,6 +130,7 @@ exports.adminSearch = async (req, res) => {
     }
     Clinic.find(query)
         // .sort({ sortBy: 1 })
+        .populate("user")
         .exec((error, results) => {
             if (error) {
                 res.send([]);
