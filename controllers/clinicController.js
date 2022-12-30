@@ -198,11 +198,10 @@ exports.addClinic = async (req, res) => {
             });
             await newNotification.save((error, notif) => {
                 if (error) {
-                    res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
                     res.status(400).json({ errorMessage: 'Notification error', error });
                 }
                 else {
-                    res.status(200).json({ successMessage: "Notification Added", notif });
+                    res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
                 }
             })
         } else {
