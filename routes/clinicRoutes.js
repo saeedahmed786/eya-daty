@@ -1,6 +1,6 @@
 const express = require('express');
 const { AuthenticatorJWT, isAdmin } = require('../middlewares/authenticator');
-const { addClinic, getAllClinics, getClinicById, getClinicByUserId, updateViews, updateFavourites, addRecommendation, addNotRecommendations, removeNotRecommendations, removeRecommendation, updateClinic, deleteClinic, adminAddClinic, getAllNotifications, getLimitedClinics, getAllFavouritesByPageId, deleteFavourite, addFavourite, getAllFavouritesByUserId, searchClinics } = require('../controllers/clinicController');
+const { addClinic, getAllClinics, getClinicById, getClinicByUserId, updateViews, updateFavourites, addRecommendation, addNotRecommendations, removeNotRecommendations, removeRecommendation, updateClinic, deleteClinic, adminAddClinic, getAllNotifications, getLimitedClinics, getAllFavouritesByPageId, deleteFavourite, addFavourite, getAllFavouritesByUserId, searchClinics, markNotificationsAsRead } = require('../controllers/clinicController');
 
 const router = express.Router();
 
@@ -22,6 +22,7 @@ router.put('/notrecommend/:id', AuthenticatorJWT, addNotRecommendations);
 router.put('/remove/notrecommend/:id', AuthenticatorJWT, removeNotRecommendations);
 
 router.get('/notifications', AuthenticatorJWT, isAdmin, getAllNotifications);
+router.get('/mark-read', AuthenticatorJWT, isAdmin, markNotificationsAsRead);
 
 router.get('/favourite/:id', getAllFavouritesByPageId);
 router.get('/user/favourite/:page', AuthenticatorJWT, getAllFavouritesByUserId);

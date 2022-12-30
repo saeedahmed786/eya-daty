@@ -85,10 +85,6 @@ const clinicSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    services: {
-        type: Array,
-        required: true
-    },
     notes: {
         type: Array,
     },
@@ -97,7 +93,7 @@ const clinicSchema = new mongoose.Schema({
     },
     owner: {
         type: String,
-        required: true,
+        // required: true,
         default: "Yes"
     },
     recommendations: {
@@ -112,7 +108,7 @@ const clinicSchema = new mongoose.Schema({
     },
     views: {
         type: Array,
-        ref: "User",
+        ref: "User", 
         default: []
     },
     favourites: {

@@ -4,13 +4,13 @@ const fs = require("fs");
 
 exports.uploadFiles = async (req, res) => {
     if (req.files) {
+        console.log(req.files)
         const uploader = async (path) => await cloudinary.uploads(path, 'Eyadaty')
-        // const urls = [];
         const { path } = req.files[0];
         const newPath = await uploader(path)
-        // urls.push(newPath);
+        console.log(newPath)
         fs.unlinkSync(path);
-        res.status(200).json(newPath)
+        res.status(200).json(newPath) 
     } else {
         res.status(400).json({ errorMessage: 'Files could not be uploaded.' });
     }

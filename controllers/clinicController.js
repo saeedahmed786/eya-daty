@@ -111,6 +111,27 @@ exports.getAllNotifications = async (req, res) => {
     }
 }
 
+exports.markNotificationsAsRead = async (req, res) => {
+    const findNotification = await Notification.find();
+    if (findNotification) {
+        Notification.updateMany(
+            {},
+            {
+                $set: { readStatus: "true" }
+            },
+            function (error, success) {
+                console.log(error, success)
+                if (error) {
+                    res.status(200).json({ errorMessage: "Notifications not read" })
+                } else {
+                    res.status(200).json({ successMessage: "Notifications read" })
+                }
+            });
+    } else {
+        res.json({ errorMessage: 'Notification not found.' })
+    }
+}
+
 exports.addClinic = async (req, res) => {
     const findClinic = await Clinic.findOne({ user: req.user._id });
     if (findClinic) {
@@ -144,7 +165,6 @@ exports.addClinic = async (req, res) => {
     } else {
         const clinic = new Clinic({
             user: req.user._id,
-            picture: req.body.picture,
             type: req.body.type,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -195,7 +215,6 @@ exports.addClinic = async (req, res) => {
 exports.adminAddClinic = async (req, res) => {
     const clinic = new Clinic({
         user: req.user._id,
-        picture: req.body.picture,
         type: req.body.type,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -232,11 +251,11 @@ exports.adminAddClinic = async (req, res) => {
         });
         await newNotification.save((error, notif) => {
             if (error) {
-                res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
                 res.status(400).json({ errorMessage: 'Notification error', error });
             }
             else {
-                res.status(200).json({ successMessage: "Notification Added", notif });
+                res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
+                console.log("Notification Added")
             }
         })
     } else {
