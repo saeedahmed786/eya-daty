@@ -225,7 +225,20 @@ exports.adminAddClinic = async (req, res) => {
 
     const saveClinic = await clinic.save();
     if (saveClinic) {
-        res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
+        const newNotification = new Notification({
+            text: `created a new page`,
+            user: req.user._id,
+            link: "/admin/pages"
+        });
+        await newNotification.save((error, notif) => {
+            if (error) {
+                res.status(200).json({ successMessage: 'Clinic added', clinic: saveClinic });
+                res.status(400).json({ errorMessage: 'Notification error', error });
+            }
+            else {
+                res.status(200).json({ successMessage: "Notification Added", notif });
+            }
+        })
     } else {
         res.status(400).json({ errorMessage: 'Clinic could not be added. Please try again' });
     }
