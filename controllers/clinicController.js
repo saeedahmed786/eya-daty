@@ -4,7 +4,7 @@ const Favourite = require('../models/favouriteModel');
 
 
 exports.getAllClinics = async (req, res) => {
-    const clinics = await Clinic.find().limit(10).populate("user category");
+    const clinics = await Clinic.find().limit(10).populate("user");
     if (clinics) {
         res.status(200).json(clinics);
     }
@@ -17,7 +17,7 @@ exports.getLimitedClinics = async (req, res) => {
     const PAGE_SIZE = 10;
     const page = req.params.page || "0";
     console.log(req.params.page)
-    const clinics = await Clinic.find().limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user category").exec();
+    const clinics = await Clinic.find().limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user").exec();
     const count = await Clinic.countDocuments({});
     if (clinics) {
         res.status(200).json({ clinics, count });
@@ -28,7 +28,7 @@ exports.getLimitedClinics = async (req, res) => {
 }
 
 exports.getClinicByUserId = async (req, res) => {
-    const clinic = await Clinic.findOne({ user: req.params.id }).populate("user category");
+    const clinic = await Clinic.findOne({ user: req.params.id }).populate("user");
     if (clinic) {
         res.status(200).json(clinic);
     }
@@ -38,7 +38,7 @@ exports.getClinicByUserId = async (req, res) => {
 }
 
 exports.getClinicById = async (req, res) => {
-    const clinic = await Clinic.findOne({ _id: req.params.id }).populate("user category");
+    const clinic = await Clinic.findOne({ _id: req.params.id }).populate("user");
     if (clinic) {
         res.status(200).json(clinic);
     }
