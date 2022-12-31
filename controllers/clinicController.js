@@ -16,7 +16,6 @@ exports.getAllClinics = async (req, res) => {
 exports.getLimitedClinics = async (req, res) => {
     const PAGE_SIZE = 10;
     const page = req.params.page || "0";
-    console.log(req.params.page)
     const clinics = await Clinic.find().limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user").exec();
     const count = await Clinic.countDocuments({});
     if (clinics) {
@@ -48,6 +47,8 @@ exports.getClinicById = async (req, res) => {
 }
 
 exports.searchClinics = async (req, res) => {
+    const PAGE_SIZE = 10;
+    const page = req.params.page || "0";
     const options = req.query.options;
     const clinicName = req.query.clinicName;
     const city = req.query.city;
@@ -79,10 +80,16 @@ exports.searchClinics = async (req, res) => {
         query.$and.push({ 'services': services });
     }
     if (options && options === "Facebook") {
-        query.$and.push({ facebookLink: { $ne: undefined }, facebookLink: { $ne: "" } });
+        query.$and.push({ facebookLink: { $ne: undefined }, facebookLink: { $ne: "" }, facebookLink: { $ne: null } });
+    }
+    if (options && options === "Instagram") {
+        query.$and.push({ instagram: { $ne: undefined }, instagram: { $ne: "" }, instagram: { $ne: null } });
+    }
+    if (options && options === "Twitter") {
+        query.$and.push({ twitter: { $ne: undefined }, twitter: { $ne: "" }, twitter: { $ne: null } });
     }
     if (options && options === "Email") {
-        query.$and.push({ email: { $ne: undefined }, email: { $ne: "" } });
+        query.$and.push({ email: { $ne: undefined }, email: { $ne: "" }, email: { $ne: null } });
     }
     if (options && options === "+5 Recommandations") {
         query.$and.push({ recommendations: { $ne: undefined }, recommendations: { $ne: "" } });
@@ -96,6 +103,7 @@ exports.searchClinics = async (req, res) => {
                 sortBy === "notrecommendations" &&
                 { "notrecommendations": -1 }
         )
+        .limit(PAGE_SIZE).skip(PAGE_SIZE * page).populate("user")
         .populate("user")
         .exec((error, results) => {
             // console.log(error, results)
@@ -185,6 +193,9 @@ exports.addClinic = async (req, res) => {
         findClinic.clinicName = req.body.clinicName;
         findClinic.experience = req.body.experience;
         findClinic.facebookLink = req.body.facebookLink;
+        findClinic.instagram = req.body.instagram;
+        findClinic.twitter = req.body.twitter;
+        findClinic.messenger = req.body.messenger;
         findClinic.specialisation = req.body.specialisation;
         findClinic.notes = req.body.notes;
         findClinic.services = req.body.services;
@@ -215,6 +226,9 @@ exports.addClinic = async (req, res) => {
             clinicName: req.body.clinicName,
             experience: req.body.experience,
             facebookLink: req.body.facebookLink,
+            instagram: req.body.instagram,
+            messenger: req.body.messenger,
+            twitter: req.body.twitter,
             specialisation: req.body.specialisation,
             notes: req.body.notes,
             services: req.body.services,
@@ -264,6 +278,9 @@ exports.adminAddClinic = async (req, res) => {
         clinicName: req.body.clinicName,
         experience: req.body.experience,
         facebookLink: req.body.facebookLink,
+        instagram: req.body.instagram,
+        messenger: req.body.messenger,
+        twitter: req.body.twitter,
         specialisation: req.body.specialisation,
         notes: req.body.notes,
         services: req.body.services,
@@ -318,6 +335,10 @@ exports.updateClinic = async (req, res) => {
         findClinic.clinicName = req.body.clinicName;
         findClinic.experience = req.body.experience;
         findClinic.facebookLink = req.body.facebookLink;
+        findClinic.facebookLink = req.body.facebookLink;
+        findClinic.instagram = req.body.instagram;
+        findClinic.twitter = req.body.twitter;
+        findClinic.messenger = req.body.messenger;
         findClinic.specialisation = req.body.specialisation;
         findClinic.notes = req.body.notes;
         findClinic.services = req.body.services;

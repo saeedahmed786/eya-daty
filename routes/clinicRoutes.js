@@ -4,7 +4,7 @@ const { addClinic, getAllClinics, getClinicById, getClinicByUserId, updateViews,
 
 const router = express.Router();
 
-router.get('/search', searchClinics);
+router.get('/search/:page', searchClinics);
 router.get('/admin/finding', adminSearch);
 
 router.post('/add', AuthenticatorJWT, addClinic);

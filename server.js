@@ -22,7 +22,7 @@ const corsOpts = {
 
 /******************************************MiddleWares  ********************************************/
 app.use(cors(corsOpts));
-app.use(express.json());
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/api/users', userRoutes);

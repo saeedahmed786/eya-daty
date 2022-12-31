@@ -105,39 +105,21 @@ exports.login = async (req, res) => {
 exports.updateUser = async (req, res) => {
     const findUser = await User.findOne({ _id: req.user._id });
     if (findUser) {
-        if (req.file) {
-            findUser.fullName = req.body.name;
-            findUser.email = req.body.email;
-            findUser.phone = req.body.phone;
-            findUser.city = req.body.city;
-            findUser.state = req.body.state;
-            findUser.dob = req.body.dob;
-            findUser.gender = req.body.gender;
-            findUser.picture = req.body.profileFile;
+        findUser.fullName = req.body.name;
+        findUser.email = req.body.email;
+        findUser.phone = req.body.phone;
+        findUser.city = req.body.city;
+        findUser.state = req.body.state; 
+        findUser.dob = req.body.dob;
+        findUser.gender = req.body.gender;
+        findUser.picture = req.body.profileFile;
 
-            const saveUser = await findUser.save();
-            if (saveUser) {
-                res.status(200).json({ successMessage: 'User Updated Successfully', user: findUser })
-            } else (
-                res.status(400).json({ errorMessage: 'User could not be Updated.' })
-            )
-        }
-        else {
-            findUser.fullName = req.body.name;
-            findUser.email = req.body.email;
-            findUser.phone = req.body.phone;
-            findUser.city = req.body.city;
-            findUser.state = req.body.state;
-            findUser.dob = req.body.dob;
-            findUser.gender = req.body.gender;
-
-            const saveUser = await findUser.save();
-            if (saveUser) {
-                res.status(200).json({ successMessage: 'User Updated Successfully', user: findUser })
-            } else (
-                res.status(400).json({ errorMessage: 'User could not be Updated.' })
-            )
-        }
+        const saveUser = await findUser.save();
+        if (saveUser) {
+            res.status(200).json({ successMessage: 'User Updated Successfully', user: findUser })
+        } else (
+            res.status(400).json({ errorMessage: 'User could not be Updated.' })
+        )
     } else {
         res.status(404).json({ errorMessage: 'User not found.' })
     }

@@ -48,11 +48,20 @@ const clinicSchema = new mongoose.Schema({
     },
     phoneTwo: {
         type: String,
-    },
+    }, 
     fax: {
         type: String,
     },
     facebookLink: {
+        type: String,
+    },
+    instagram: {
+        type: String,
+    },
+    twitter: {  
+        type: String,
+    },
+    messenger: {
         type: String,
     },
     bio: {
@@ -108,7 +117,7 @@ const clinicSchema = new mongoose.Schema({
     },
     views: {
         type: Array,
-        ref: "User", 
+        ref: "User",
         default: []
     },
     favourites: {
