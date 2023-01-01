@@ -55,7 +55,7 @@ exports.searchClinics = async (req, res) => {
     const gender = req.query.gender;
     const services = req.query.service;
     const sortBy = req.query.sortBy;
-    const specialisation = req.query.specialisation;
+    const speciality = req.query.speciality;
 
     console.log(options)
 
@@ -70,10 +70,10 @@ exports.searchClinics = async (req, res) => {
     if (city) {
         query.$and.push({ city: city });
     }
-    if (specialisation) {
-        query.$and.push({ specialisation: specialisation });
+    if (speciality) {
+        query.$and.push({ specialisation: speciality });
     }
-    if (gender) {
+    if (gender) { 
         query.$and.push({ gender: gender });
     }
     if (services) {
