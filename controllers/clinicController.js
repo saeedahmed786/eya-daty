@@ -56,6 +56,7 @@ exports.searchClinics = async (req, res) => {
     const services = req.query.service;
     const sortBy = req.query.sortBy;
     const speciality = req.query.speciality;
+    const available = req.query.available;
 
     console.log(options)
 
@@ -73,11 +74,14 @@ exports.searchClinics = async (req, res) => {
     if (speciality) {
         query.$and.push({ specialisation: speciality });
     }
-    if (gender) { 
+    if (gender) {
         query.$and.push({ gender: gender });
     }
     if (services) {
         query.$and.push({ 'services': services });
+    }
+    if (available) {
+        query.$and.push({ schedule: available });
     }
     if (options && options === "Facebook") {
         query.$and.push({ facebookLink: { $ne: undefined }, facebookLink: { $ne: "" }, facebookLink: { $ne: null } });
