@@ -17,7 +17,7 @@ const corsOpts = {
     methods: [
         'GET', "POST", "PUT", "DELETE"
     ]
-};
+}; 
 
 
 /******************************************MiddleWares  ********************************************/
@@ -28,7 +28,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/clinics', clinicRoutes);
-app.use('/api/files', uploadFilesRoutes);
+app.use('/api/files', uploadFilesRoutes); 
 app.use('/api/comments', commentsRoutes);
 app.use('/api/blogs', blogsRoutes);
 

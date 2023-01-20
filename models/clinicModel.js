@@ -75,6 +75,10 @@ const clinicSchema = new mongoose.Schema({
         type: String,
         default: "alru"
     },
+    fullAddress: {
+        type: String,
+        default: "alru"
+    },
     state: {
         type: String,
         default: "alru"

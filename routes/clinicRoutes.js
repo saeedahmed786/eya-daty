@@ -13,6 +13,7 @@ router.get('/', getAllClinics);
 router.get('/limited/:page', getLimitedClinics);
 router.get('/user/:id', AuthenticatorJWT, getClinicByUserId);
 router.get('/get/:id', getClinicById);
+// router.get('/search', searchTermCli);
 router.post('/update/:id', AuthenticatorJWT, isAdmin, updateClinic);
 router.delete('/delete/:id', AuthenticatorJWT, isAdmin, deleteClinic);
 router.post('/views/:id', AuthenticatorJWT, updateViews);

@@ -208,6 +208,9 @@ exports.addClinic = async (req, res) => {
         findClinic.bio = req.body.bio;
         findClinic.picture = req.body.profileFile;
         findClinic.gender = req.body.gender;
+        findClinic.fullAddress = req.body.fullAddress;
+        findClinic.state = req.body.state;
+        findClinic.city = req.body.city;
         findClinic.pictures = req.body.filesList;
 
         const saveClinic = await findClinic.save();
@@ -243,6 +246,7 @@ exports.addClinic = async (req, res) => {
             gender: req.body.gender,
             state: req.body.state,
             city: req.body.city,
+            fullAddress: req.body.fullAddress,
             pictures: req.body.filesList,
         });
 
@@ -299,6 +303,7 @@ exports.adminAddClinic = async (req, res) => {
         pictures: req.body.filesList,
         state: req.body.state,
         city: req.body.city,
+        fullAddress: req.body.fullAddress,
     });
 
     const saveClinic = await clinic.save();
@@ -354,6 +359,9 @@ exports.updateClinic = async (req, res) => {
         findClinic.bio = req.body.bio;
         findClinic.picture = req.body.profileFile;
         findClinic.gender = req.body.gender;
+        findClinic.state = req.body.gender;
+        findClinic.city = req.body.gender;
+        findClinic.fullAddress = req.body.fullAddress;
         findClinic.pictures = req.body.filesList;
 
         const saveClinic = await findClinic.save();
